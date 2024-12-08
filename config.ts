@@ -32,8 +32,8 @@ export default defineConfig({
     },
 
 
-    brandName: "Chinese Mystic Knowledge",
-    tagline: "Discover the ancient wisdom of Chinese mysticism, blending tradition with modern insights to unlock life's secrets.",
+    brandName: "Lif Ai",
+    tagline: "Your life health assistant",
     apiKey: '',
     apiURL: '',
 

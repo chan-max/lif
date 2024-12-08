@@ -2,7 +2,7 @@
   <AConfigProvider :locale="locale == 'zh' ? zhCN : null">
     <div class="flex flex-col w-full h-full">
       <!-- Ad Section -->
-      <div class="bg-black text-white py-4">
+      <!-- <div class="bg-black text-white py-4">
         <div class="container mx-auto flex justify-between items-center px-4">
           <p class="text-sm">Unlock the secrets of Chinese Mystic Knowledge with us!</p>
           <button
@@ -12,7 +12,7 @@
             join now
           </button>
         </div>
-      </div>
+      </div> -->
 
       <Header></Header>
 
@@ -33,8 +33,8 @@ import {
   initLoginStoreUserInfo,
   doLogout,
 } from "@/common/store/login";
-
 import zhCN from "ant-design-vue/es/locale/zh_CN";
+
 initLoginStoreUserInfo();
 
 function handleSubscribe() {

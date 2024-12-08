@@ -1,4 +1,10 @@
 {
+
+
+    "common":{
+        "login":"登录"
+    },
+
     "tabs": {
         "fortune": "算命",
         "zodiac": "星座",

@@ -45,6 +45,7 @@
   },
   "devDependencies": {
     "@element-plus/nuxt": "^1.1.0",
+    "@nuxtjs/color-mode": "^3.5.2",
     "@types/react": "^18.3.12",
     "@vitejs/plugin-vue-jsx": "^4.1.0",
     "autoprefixer": "^10.4.19",

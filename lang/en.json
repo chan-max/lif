@@ -1,4 +1,7 @@
 {
+    "common": {
+        "login": "login"
+    },
     "tabs": {
         "fortune": "Fortune Telling",
         "zodiac": "Zodiac",

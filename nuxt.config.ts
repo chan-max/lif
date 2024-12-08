@@ -63,6 +63,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/content',
     'nuxt-paypal',
+    '@nuxtjs/color-mode'
   ],
   // gtm: {
   //   id: config.gtmID,
@@ -80,9 +81,6 @@ export default defineNuxtConfig({
       '/api/__sitemap__/urls',
     ],
   },
-  colorMode: {
-    preference: 'light'
-  },
   i18n: {
     lazy: true, // Enable lazy loading
     strategy: 'no_prefix', // URL strategy
@@ -92,5 +90,15 @@ export default defineNuxtConfig({
   paypal: {
     clientId: 'AdOWq5VdofoxJKPNX7U7SMKF-pdRrzjbZ5aftu_peFlDFsSx-m2BpO8_tkSCngK3hHTOvYyQq_0mm73T',
     // ...options
+  },
+  colorMode: {
+    preference: 'system', // default value of $colorMode.preference
+    fallback: 'light', // fallback value if not system preference found
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '-mode',
+    storageKey: 'nuxt-color-mode'
   },
 })
