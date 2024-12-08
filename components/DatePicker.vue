@@ -20,13 +20,6 @@ const props = defineProps({
 
 const emit = defineEmits(["update:model-value", "close"]);
 
-const ChineseMask = {
-  L: "YYYY-MM-DD",
-  title: "YYYY年MM月",
-  weekdays: "日_一_二_三_四_五_六".split("_"),
-  months: "一月_二月_三月_四月_五月_六月_七月_八月_九月_十月_十一月_十二月".split("_"),
-};
-
 const date = computed({
   get: () => {
     return props.modelValue;
@@ -43,7 +36,7 @@ const attrs = {
   color: "primary",
   "is-dark": { selector: "html", darkClass: "dark" },
   "first-day-of-week": 2,
-  locale: "en",
+  locale: locale.value,
   mode: props.mode,
   // masks:locale.value == 'zh' ? ChineseMask : null
 };

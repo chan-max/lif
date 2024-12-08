@@ -7,7 +7,6 @@ export default defineNuxtConfig({
   vite: {
     plugins: [vueJsx(),], // 加载 Vue JSX 插件
 
-
   },
   typescript: {
     shim: false, // 禁用 shim，提高类型推断能力
@@ -63,7 +62,8 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/content',
     'nuxt-paypal',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    'nuxt-echarts',
   ],
   // gtm: {
   //   id: config.gtmID,

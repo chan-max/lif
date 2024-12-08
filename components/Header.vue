@@ -2,9 +2,9 @@
   <!-- Header -->
   <header
     :class="`py-4 shadow-md z-10`"
-    style="border-bottom: 1px solid rgba(255, 255, 255, 0.1)"
+    style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); height: var(--header)"
   >
-    <div class="container mx-auto flex justify-between items-center px-4">
+    <div class="mx-auto flex justify-between items-center px-8">
       <!-- Logo -->
       <NuxtLink to="/" class="flex items-center space-x-2">
         <img
@@ -17,7 +17,7 @@
       <!-- Navigation -->
       <div class="flex items-center space-x-4">
         <!-- Tabs for PC -->
-        <nav class="hidden md:flex space-x-6">
+        <nav class="hidden md:flex space-x-2 mr-8">
           <button
             v-for="(tab, index) in tabs"
             :key="index"
@@ -59,7 +59,7 @@
               <template #item="{ item }">
                 <div
                   @click="item.onclick"
-                  class="flex items-center px-4 py-2  transition cursor-pointer"
+                  class="flex items-center px-4 py-2 transition cursor-pointer"
                 >
                   <UIcon
                     :name="item.icon"
@@ -161,6 +161,8 @@ import { doLoginAction } from "@/common/store/login";
 
 import { colorMode } from "@/common/index";
 
+const currentLang = ref("zh");
+
 const router = useRouter();
 
 const langOptions = ref([
@@ -168,17 +170,15 @@ const langOptions = ref([
   { label: "中文", value: "zh" },
 ]);
 
-const { locale } = useI18n();
-const currentLang = ref(locale.value);
-
-const changeLanguage = () => {
-  locale.value = currentLang.value;
-};
-
 const loginStore = useLoginStatusStore();
 const isAdmin = computed(() => loginStore.userInfo?.isAdmin);
 
-const tabs = [{ label: "Health", path: "/health" }];
+const tabs = [
+  { label: "健康", path: "/health" },
+  { label: "记录", path: "/record" },
+  { label: "睡眠", path: "/sleep" },
+  { label: "饮食", path: "/diet" },
+];
 
 const showLoginModal = ref(false);
 const username = ref("");
@@ -191,11 +191,11 @@ const navigateTab = (index, tab) => {
 
 const items = [
   {
-    label: "Info",
+    label: "个人信息",
     icon: "i-heroicons-information-circle",
     onclick: () => router.push("/userInfo"),
   },
-  { label: "Logout", icon: "i-heroicons-arrow-right-on-rectangle", onclick: doLogout },
+  { label: "退出", icon: "i-heroicons-arrow-right-on-rectangle", onclick: doLogout },
 ];
 
 const showTabsMenu = ref(false);

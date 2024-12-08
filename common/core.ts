@@ -6,7 +6,6 @@ import theGods from 'lunisolar/plugins/theGods'
 import theGodsZh from 'lunisolar/plugins/theGods/locale/zh'
 
 
-
 // 加载插件
 lunisolar.extend(theGods)
 
