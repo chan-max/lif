@@ -16,7 +16,10 @@
 
       <Header></Header>
 
-      <div style="flex: 1" class="container mx-auto p-8">
+      <div
+        style="flex: 1; margin-top: var(--header)"
+        class="shrink-0 mx-auto w-full"
+      >
         <slot></slot>
         <!-- <ContentDoc :path="$route.path" /> -->
       </div>

@@ -30,7 +30,7 @@ async function toggleDark({ clientX: x, clientY: y }: MouseEvent) {
     )}px at ${x}px ${y}px)`,
   ];
 
-  await document.startViewTransition(async () => {
+  await (document as any).startViewTransition(async () => {
     setColorMode();
     await nextTick();
   }).ready;

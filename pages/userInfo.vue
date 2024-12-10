@@ -1,11 +1,11 @@
 <template>
   <div class="p-8 max-w-lg mx-auto">
-    <h1 class="text-2xl font-bold mb-6 text-center">Edit User Information</h1>
+    <h1 class="text-2xl font-bold mb-6 text-center">编辑个人信息</h1>
     <form @submit.prevent="handleSubmit">
       <!-- Username -->
       <div class="mb-6">
         <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
-          Username
+          用户名（不可修改）
         </label>
         <UInput
           id="username"
@@ -21,7 +21,7 @@
       <!-- Gender -->
       <div class="mb-6">
         <label for="gender" class="block text-sm font-medium text-gray-700 mb-2">
-          Gender
+          性别
         </label>
         <USelect
           id="gender"
@@ -36,7 +36,7 @@
       <!-- Birthday -->
       <div class="mb-6">
         <label for="birthday" class="block text-sm font-medium text-gray-700 mb-2">
-          Birthday
+          生日
         </label>
 
         <UPopover :popper="{ placement: 'bottom-start' }">
@@ -57,7 +57,7 @@
       <!-- Height -->
       <div class="mb-6">
         <label for="height" class="block text-sm font-medium text-gray-700 mb-2">
-          Height (cm)
+          身高 (cm)
         </label>
         <UInput
           id="height"
@@ -72,7 +72,7 @@
       <!-- Weight -->
       <div class="mb-6">
         <label for="weight" class="block text-sm font-medium text-gray-700 mb-2">
-          Weight (kg)
+          体重 (kg)
         </label>
         <UInput
           id="weight"
@@ -140,8 +140,8 @@ const errors = ref({
 });
 
 const genderOptions = [
-  { label: "Male", value: "1" },
-  { label: "Female", value: "0" },
+  { label: "男", value: "1" },
+  { label: "女", value: "0" },
 ];
 
 function validateForm() {

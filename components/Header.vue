@@ -2,9 +2,10 @@
   <!-- Header -->
   <header
     :class="`py-4 shadow-md z-10`"
+    class="lif-header fixed w-full"
     style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); height: var(--header)"
   >
-    <div class="mx-auto flex justify-between items-center px-8">
+    <div class="mx-auto flex justify-between items-center px-8 h-full">
       <!-- Logo -->
       <NuxtLink to="/" class="flex items-center space-x-2">
         <img
@@ -50,12 +51,21 @@
         <div>
           <template v-if="loginStore.isLogin">
             <UDropdown :items="[items]" :popper="{ placement: 'bottom-end' }">
-              <UAvatar
-                :src="loginStore.userInfo?.avatar"
-                :alt="loginStore.userInfo?.username"
-                class="cursor-pointer hover:opacity-80 transition w-10 h-10 rounded-full"
-                :class="{ 'border-2 border-custom-500': isAdmin }"
-              />
+              <a-badge :offset="[-4, 4]">
+                <UAvatar
+                  :src="loginStore.userInfo?.avatar"
+                  :alt="loginStore.userInfo?.username"
+                  class="cursor-pointer hover:opacity-80 transition w-10 h-10 rounded-full"
+                  :class="{ 'border-2 border-custom-500': isAdmin }"
+                >
+                </UAvatar>
+
+                <template #count>
+                  <img v-if="avatarBadgeSrc" class="w-4 h-4" :src="avatarBadgeSrc" />
+                  <div></div>
+                </template>
+              </a-badge>
+
               <template #item="{ item }">
                 <div
                   @click="item.onclick"
@@ -173,6 +183,18 @@ const langOptions = ref([
 const loginStore = useLoginStatusStore();
 const isAdmin = computed(() => loginStore.userInfo?.isAdmin);
 
+const avatarBadgeSrc = computed(() => {
+  let gender = loginStore.userInfo?.gender;
+
+  if (gender == "1") {
+    return "/img/male.svg";
+  }
+
+  if (gender == "0") {
+    return "/img/female.svg";
+  }
+});
+
 const tabs = [
   { label: "健康", path: "/health" },
   { label: "记录", path: "/record" },
@@ -191,9 +213,14 @@ const navigateTab = (index, tab) => {
 
 const items = [
   {
-    label: "个人信息",
+    label: "编辑信息",
     icon: "i-heroicons-information-circle",
     onclick: () => router.push("/userInfo"),
+  },
+  {
+    label: "个人分析",
+    icon: "i-hugeicons-analytics-01",
+    onclick: () => router.push("/analyze"),
   },
   { label: "退出", icon: "i-heroicons-arrow-right-on-rectangle", onclick: doLogout },
 ];
@@ -222,12 +249,15 @@ function goSignup() {
 </script>
 
 <style scoped>
-header.light {
+header {
+  z-index: 9;
+}
+.light header {
   background-color: white;
   color: black;
 }
-header.dark {
-  background-color: #000;
+.dark header {
   color: white;
+  background-color: #111;
 }
 </style>

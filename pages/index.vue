@@ -1,32 +1,35 @@
 <template>
-  <div class="banner-container">
+  <div class="banner-container container m-auto">
     <!-- 左侧图片 -->
     <div class="banner-image">
-      <img src="/bg.png" alt="Background Image" />
+      <img
+        src="/bg.svg"
+        alt="Background Image"
+        class="animate__animated animate__pulse animate__infinite slow-heartbeat"
+      />
     </div>
 
     <!-- 右侧文字 -->
-    <div class="banner-content gradient-text">
+    <div class="banner-content gradient-text gradient-text-color">
       <h1 class="text-[4em] font-bold">你的人生健康助手</h1>
       <p class="banner-subtitle">提供最专业的服务，为您带来高效解决方案。</p>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="less">
 /* 核心样式设计 */
 
 /* 容器样式 */
 .banner-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: calc(100vh - var(--header) - 64px) !important; /* 高度占满屏幕 */
-  padding: 20px;
+  justify-content: center;
+  height: calc(100vh - var(--header)) !important; /* 高度占满屏幕 */
   background-color: transparent; /* 背景透明 */
-  border-radius: 10px;
-  gap: 20px; /* 图片和文字的间距 */
+  gap: 64px; /* 图片和文字的间距 */
   flex-wrap: wrap; /* 保证在小屏幕下内容自动换行 */
+  width: 100%;
 }
 
 /* 左侧图片样式 */
@@ -39,7 +42,7 @@
 
 .banner-image img {
   width: 100%; /* 图片宽度自适应 */
-  max-width: 600px; /* 最大宽度限制 */
+  max-width: 800px; /* 最大宽度限制 */
   height: auto; /* 高度自适应 */
   object-fit: contain; /* 确保图片内容完整 */
   border-radius: 8px; /* 图片的圆角 */
@@ -52,8 +55,6 @@
   color: #333;
   padding: 10px; /* 添加内边距增加舒适感 */
 }
-
-
 
 .banner-subtitle {
   line-height: 1.8;
@@ -125,12 +126,27 @@
   }
 }
 
-.gradient-text {
-  background: linear-gradient(90deg, #00fa00 0%,#ffaacc 40%, #ffffff 100%);
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-fill-color: transparent;
+.light {
+  .gradient-text-color {
+    background: linear-gradient(90deg, #00fa00 0%, #ffaacc 40%, #000000 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.dark {
+  .gradient-text-color {
+    background: linear-gradient(90deg, #00fa00 0%, #ffaacc 40%, #ffffff 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+.slow-heartbeat {
+  --animate-duration: 2s; /* 自定义动画持续时间 */
 }
 </style>

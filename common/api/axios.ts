@@ -10,9 +10,6 @@ const axiosInstance = axios.create({
     }
 });
 
-
-
-
 import { defaultResponseInterceptors, tokenRequestInterceptor, tokenResponseInterceptor } from "./interception";
 
 
@@ -54,18 +51,19 @@ export const getUserInfo = () => new Promise(async (resolve, reject) => {
     resolve(res.data)
 })
 
-
-export const getDreamList = (params) => new Promise(async (resolve, reject) => {
-    let res = await api.post('/api/dream/page', params)
-    resolve(res.data)
+// 获取 0 - 100 岁的 人数分布
+export const getAgeGenderDistribution = () => new Promise(async (resolve, reject) => {
+    let res = await api.get(`/api/analyze/age-gender-distribution`)
+    resolve(res.data.data)
 })
 
-export const getDreamById = (id) => new Promise(async (resolve, reject) => {
-    let res = await api.get(`/api/dream/${id}`)
-    resolve(res.data)
-})
 
+// 获取身高数据分布
+export const getHeightDistribution = () => new Promise(async (resolve, reject) => {
+    let res = await api.get(`/api/analyze/height-distribution`)
+    resolve(res.data.data)
+})
 
 export default {
-    login, logout, getUserInfo, signup, updateUserInfo, getDreamList, getDreamById
+    login, logout, getUserInfo, signup, updateUserInfo, getAgeGenderDistribution, getHeightDistribution
 };
