@@ -52,14 +52,16 @@
           <template v-if="loginStore.isLogin">
             <UDropdown :items="[items]" :popper="{ placement: 'bottom-end' }">
               <a-badge :offset="[-4, 4]">
+                <!-- <div
+                  class="relative bg-gradient-to-r from-custom-400 via-custom-500 to-custom-600 rounded-full"
+                > -->
                 <UAvatar
-                  :src="loginStore.userInfo?.avatar"
+                  :src="loginStore.userInfo?.avatar || getUserDefaultAvatar()"
                   :alt="loginStore.userInfo?.username"
-                  class="cursor-pointer hover:opacity-80 transition w-10 h-10 rounded-full"
-                  :class="{ 'border-2 border-custom-500': isAdmin }"
+                  class="cursor-pointer hover:opacity-80 transition w-10 h-10 rounded-full shrink-0"
                 >
                 </UAvatar>
-
+                <!-- </div> -->
                 <template #count>
                   <img v-if="avatarBadgeSrc" class="w-4 h-4" :src="avatarBadgeSrc" />
                   <div></div>
@@ -168,6 +170,7 @@ import { useI18n } from "vue-i18n";
 import { useLoginStatusStore, doLogout } from "@/common/store/login";
 import Api from "@/common/api/axios";
 import { doLoginAction } from "@/common/store/login";
+import { getUserDefaultAvatar } from "@/common/index";
 
 import { colorMode } from "@/common/index";
 
@@ -197,6 +200,7 @@ const avatarBadgeSrc = computed(() => {
 
 const tabs = [
   { label: "健康", path: "/health" },
+  { label: "今天", path: "/today" },
   { label: "记录", path: "/record" },
   { label: "睡眠", path: "/sleep" },
   { label: "饮食", path: "/diet" },

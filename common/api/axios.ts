@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // 创建 Axios 实例
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
     // baseURL: "https://49.232.186.238:4321", // 基础地址
     baseURL: "https://localhost:4321", // 基础地址
     timeout: 50000, // 请求超时时间
@@ -29,6 +29,18 @@ export const api = {
     delete: (url, config = {}) =>
         axiosInstance.delete(url, { ...config }),
 };
+
+
+
+export const getBasicConfig = () => new Promise(async (resolve, reject) => {
+    try {
+        let res = await api.post('/api/config')
+        resolve(res.data.data)
+    } catch (e) {
+        reject()
+    }
+})
+
 
 
 export const login = (params) => new Promise(async (resolve, reject) => {
@@ -64,6 +76,12 @@ export const getHeightDistribution = () => new Promise(async (resolve, reject) =
     resolve(res.data.data)
 })
 
+
+export const createDayrecord = () => new Promise(async (resolve, reject) => {
+    let res = await api.post(`/api/dayrecord/create`)
+    resolve(res.data.data)
+})
+
 export default {
-    login, logout, getUserInfo, signup, updateUserInfo, getAgeGenderDistribution, getHeightDistribution
+    login, logout, getUserInfo, signup, updateUserInfo, getAgeGenderDistribution, getHeightDistribution, createDayrecord, getBasicConfig
 };

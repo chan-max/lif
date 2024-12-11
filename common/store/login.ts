@@ -19,7 +19,6 @@ export const doLoginAction = (data: any, once = false) => {
 };
 
 
-
 export const doLogout = async () => {
     await Api.logout();
     const loginStatusStore = useLoginStatusStore();

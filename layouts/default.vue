@@ -16,10 +16,7 @@
 
       <Header></Header>
 
-      <div
-        style="flex: 1; margin-top: var(--header)"
-        class="shrink-0 mx-auto w-full"
-      >
+      <div style="flex: 1; margin-top: var(--header)" class="shrink-0 mx-auto w-full">
         <slot></slot>
         <!-- <ContentDoc :path="$route.path" /> -->
       </div>
@@ -38,7 +35,6 @@ import {
 } from "@/common/store/login";
 import zhCN from "ant-design-vue/es/locale/zh_CN";
 
-initLoginStoreUserInfo();
 
 function handleSubscribe() {
   router.push({ path: "/subscribe" });

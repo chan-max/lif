@@ -7,7 +7,7 @@
       <div class="text-center md:text-left">
         <h2 class="text-lg font-bold">Lif Health Assistant</h2>
         <p class="text-xs mt-1">
-          Supporting your journey to better health with AI-powered solutions.
+          Thanks for supporting us
         </p>
       </div>
 
@@ -26,7 +26,7 @@
         &copy; 2024 Lif Health Assistant. All rights reserved.
       </p>
       <p class="text-xs mt-1">
-        Built with passion to help you thrive.
+        Your life health assistant
       </p>
     </div>
   </footer>

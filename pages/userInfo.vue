@@ -2,6 +2,25 @@
   <div class="p-8 max-w-lg mx-auto">
     <h1 class="text-2xl font-bold mb-6 text-center">编辑个人信息</h1>
     <form @submit.prevent="handleSubmit">
+      <!-- Avatar Upload -->
+      <div class="mb-6 text-center">
+        <label class="block text-sm font-medium text-gray-700 mb-2">头像</label>
+        <div class="flex flex-col items-center">
+          <img
+            :src="avatarPreview || form.avatar || getUserDefaultAvatar()"
+            style="border: none; outline: none"
+            class="w-36 h-36 rounded-full mb-4 object-cover bg-gray-700"
+          />
+          <input
+            type="file"
+            @change="handleAvatarSelection"
+            accept="image/*"
+            class="avatar-input"
+          />
+          <small v-if="errors.avatar" class="text-red-500">{{ errors.avatar }}</small>
+        </div>
+      </div>
+
       <!-- Username -->
       <div class="mb-6">
         <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
@@ -104,12 +123,17 @@ import { useRouter } from "vue-router";
 import { useLoginStatusStore } from "~/common/store/login";
 import { format } from "date-fns";
 import Api from "@/common/api/axios";
+import { uploadToCOS, deleteCOSFile } from "@/common/api/cos"; // 替换为实际路径
+import { getUserDefaultAvatar } from "@/common/index";
 
 const router = useRouter();
 const loginStore = useLoginStatusStore();
 
 const form = ref({
   username: "",
+  avatar: "", // 最终保存的头像地址
+  avatarFile: null, // 临时选中的头像文件
+  oldAvatar: "", // 保存旧头像地址
   birthday: "",
   gender: "",
   height: "", // 身高，单位为厘米
@@ -124,6 +148,7 @@ watch(
       birthday: loginStore.userInfo?.birthday
         ? new Date(loginStore.userInfo?.birthday)
         : new Date(),
+      oldAvatar: loginStore.userInfo?.avatar || "",
     };
   },
   {
@@ -133,11 +158,14 @@ watch(
 
 const errors = ref({
   username: "",
+  avatar: "",
   birthday: "",
   gender: "",
   height: "",
   weight: "",
 });
+
+const avatarPreview = ref(""); // 头像本地预览地址
 
 const genderOptions = [
   { label: "男", value: "1" },
@@ -168,6 +196,29 @@ function validateForm() {
 
 const loading = ref(false);
 
+async function deleteOldAvatar() {
+  if (form.value.oldAvatar) {
+    try {
+      const key = form.value.oldAvatar.split("/").pop(); // 从 URL 中提取文件 key
+      await deleteCOSFile(key); // 调用删除接口
+      console.log("旧头像已删除:", key);
+    } catch (error) {
+      console.error("删除旧头像失败:", error);
+    }
+  }
+}
+
+function handleAvatarSelection(event) {
+  const file = event.target.files[0];
+  if (!file) {
+    alert("请选择一个文件！");
+    return;
+  }
+
+  avatarPreview.value = URL.createObjectURL(file); // 本地预览
+  form.value.avatarFile = file; // 暂存新头像文件
+}
+
 async function handleSubmit() {
   if (!validateForm()) {
     return;
@@ -175,9 +226,27 @@ async function handleSubmit() {
 
   try {
     loading.value = true;
-    await Api.updateUserInfo(toRaw(form.value));
+
+    // 如果用户选择了新头像文件，则上传到 COS 并删除旧头像
+    if (form.value.avatarFile) {
+      // 删除旧头像
+      await deleteOldAvatar();
+
+      // 上传新头像
+      const { url } = await uploadToCOS({ file: form.value.avatarFile });
+      form.value.avatar = url; // 更新为 COS 返回的地址
+    }
+
+    // 创建提交数据的副本，移除 avatarFile 和 oldAvatar 字段
+    const submitData = { ...toRaw(form.value) };
+    delete submitData.avatarFile;
+    delete submitData.oldAvatar;
+
+    // 提交用户信息（不包含 avatarFile 和 oldAvatar 字段）
+    await Api.updateUserInfo(submitData);
     message.success("User info updated successfully");
   } catch (e) {
+    console.error(e);
     message.error("Failed to update user info");
   } finally {
     loading.value = false;
@@ -185,70 +254,22 @@ async function handleSubmit() {
 }
 </script>
 
-<style scoped>
-/* Light Mode 样式 */
-.light .p-8 {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-.light label {
-  color: #333333;
-}
-
-.light input,
-.light select,
-.light .UInput,
-.light .USelect,
-.light .DatePicker {
-  background-color: #f9f9f9;
-  color: #000000;
-  border: 1px solid #cccccc;
-}
-
-.light small {
-  color: #ff4d4f; /* 错误提示文字颜色 */
-}
-
-.light button.UButton {
-  background-color: #007bff;
-  color: #ffffff;
-}
-
-.light button.UButton:hover {
-  background-color: #0056b3;
-}
-
-/* Dark Mode 样式 */
-.dark .p-8 {
-  background-color: #000;
-  color: #e2e8f0;
-}
-
-.dark label {
-  color: #e2e8f0;
-}
-
-.dark input,
-.dark select,
-.dark .UInput,
-.dark .USelect,
-.dark .DatePicker {
-  background-color: #2d3748;
-  color: #e2e8f0;
-  border: 1px solid #4a5568;
-}
-
-.dark small {
-  color: #ff6b6b; /* 错误提示文字颜色 */
-}
-
-.dark button.UButton {
-  background-color: #4a5568;
-  color: #e2e8f0;
-}
-
-.dark button.UButton:hover {
-  background-color: #2c5282;
+<style>
+.avatar-input {
+  outline-style: none;
+  border: 1px solid #c0c4cc;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  font-family: "Microsoft soft";
+  &:focus {
+    border-color: #f07b00;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), #f07b00;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), #f07b00;
+  }
 }
 </style>

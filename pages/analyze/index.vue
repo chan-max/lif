@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="p-8 flex gap-16">
+  <div class="p-8 flex gap-16 flex-wrap justify-center">
     <div style="height: 600px; width: 800px">
       <Chart-AgeGenderDistribution></Chart-AgeGenderDistribution>
     </div>
