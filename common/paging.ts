@@ -31,6 +31,7 @@ export const usePagination = (fetchApi: any, params?: any) => {
 
             const { list: newList, total: newTotal } = response;
 
+
             // 更新数据状态
             list.value = newList || [];
             total.value = newTotal || 0;

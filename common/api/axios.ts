@@ -1,5 +1,5 @@
 import axios from "axios";
-
+import { v4 as uuidv4 } from 'uuid';
 // 创建 Axios 实例
 export const axiosInstance = axios.create({
     // baseURL: "https://49.232.186.238:4321", // 基础地址
@@ -82,6 +82,32 @@ export const createDayrecord = () => new Promise(async (resolve, reject) => {
     resolve(res.data.data)
 })
 
+export const addRecordDetail = (post: any) => new Promise(async (resolve, reject) => {
+
+    post = {
+        createTime: new Date(),
+        updateTime: new Date(),
+        id: uuidv4(),
+        ...post
+    }
+
+    let res = await api.post(`/api/dayrecord/add`, post)
+    resolve(res.data.data)
+})
+
+
+export const getDayrecord = (id?: any) => new Promise(async (resolve, reject) => {
+    let res = await api.get(`/api/dayrecord${id ? '/' + 'id' : ''}`)
+    resolve(res.data.data)
+})
+
+
+
+export const getFoods = (post: any) => new Promise(async (resolve, reject) => {
+    let res = await api.post(`/api/food/page`, post)
+    resolve(res.data)
+})
+
 export default {
-    login, logout, getUserInfo, signup, updateUserInfo, getAgeGenderDistribution, getHeightDistribution, createDayrecord, getBasicConfig
+    login, logout, getUserInfo, signup, updateUserInfo, getAgeGenderDistribution, getHeightDistribution, createDayrecord, getBasicConfig, getFoods, addRecordDetail, getDayrecord
 };

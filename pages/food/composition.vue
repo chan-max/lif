@@ -45,7 +45,7 @@ const config = ref({
     color: "#2D353Cff",
   },
   caption: {
-    text: "Table title",
+    text: "常见食物元素表",
     padding: {
       top: 12,
       right: 12,
@@ -101,7 +101,7 @@ const config = ref({
   },
   tbody: {
     tr: {
-      visible: 5,
+      visible: 15,
       height: 32,
       border: {
         size: 0,

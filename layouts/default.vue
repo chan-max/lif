@@ -1,5 +1,10 @@
 <template>
-  <AConfigProvider :locale="locale == 'zh' ? zhCN : null">
+  <AConfigProvider
+    :locale="locale == 'zh' ? zhCN : null"
+    :theme="{
+      algorithm: colorMode == 'dark' ? theme.darkAlgorithm : '',
+    }"
+  >
     <div class="flex flex-col w-full h-full">
       <!-- Ad Section -->
       <!-- <div class="bg-black text-white py-4">
@@ -34,7 +39,11 @@ import {
   doLogout,
 } from "@/common/store/login";
 import zhCN from "ant-design-vue/es/locale/zh_CN";
+import { theme } from "ant-design-vue";
+import { useI18n } from "vue-i18n";
+import { colorMode } from "@/common/index";
 
+const { locale, locales, setLocale } = useI18n();
 
 function handleSubscribe() {
   router.push({ path: "/subscribe" });

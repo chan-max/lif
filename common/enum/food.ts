@@ -2,16 +2,83 @@
 
 export const foodCompositions = [
     // 宏量营养素 (Macronutrients)
-    { key: "total_carbohydrates", name: "Total Carbohydrates", chineseName: "总碳水化合物", unit: "g", description: "碳水化合物是提供能量的主要来源，包括简单糖和复杂的多糖。" },
-    { key: "sugars", name: "Sugars", chineseName: "糖分", unit: "g", description: "简单糖是碳水化合物的主要形式，提供快速能量。" },
-    { key: "fiber", name: "Dietary Fiber", chineseName: "膳食纤维", unit: "g", description: "纤维分为可溶性和不可溶性，支持消化健康和胆固醇控制。" },
-    { key: "starch", name: "Starch", chineseName: "淀粉", unit: "g", description: "淀粉是复杂碳水化合物，由植物储存的能量，消化后提供持久能量。" },
-    { key: "total_fats", name: "Total Fats", chineseName: "总脂肪", unit: "g", description: "脂肪是能量密集的营养素，为细胞膜提供结构，并在某些情况下保护器官。" },
-    { key: "saturated_fats", name: "Saturated Fats", chineseName: "饱和脂肪", unit: "g", description: "饱和脂肪在动物脂肪中常见，过量可能对心血管健康有害。" },
-    { key: "monounsaturated_fats", name: "Monounsaturated Fats", chineseName: "单不饱和脂肪", unit: "g", description: "单不饱和脂肪有益于心血管健康，降低坏胆固醇。" },
-    { key: "polyunsaturated_fats", name: "Polyunsaturated Fats", chineseName: "多不饱和脂肪", unit: "g", description: "多不饱和脂肪包括 Omega-3 和 Omega-6，支持脑部发育和抗炎。" },
-    { key: "cholesterol", name: "Cholesterol", chineseName: "胆固醇", unit: "mg", description: "胆固醇是细胞膜的组成部分，过量摄入可能导致心血管疾病。" },
-    { key: "total_proteins", name: "Total Proteins", chineseName: "总蛋白质", unit: "g", description: "蛋白质是细胞修复、生长和酶生成的重要成分，由氨基酸组成。" },
+    {
+        key: "water",
+        name: "Water",
+        chineseName: "水",
+        unit: "g",
+        description: "水是生命的基本组成部分，支持所有生理功能，包括体温调节、营养输送和代谢废物排出。"
+    },
+    {
+        key: "total_carbohydrates",
+        name: "Total Carbohydrates",
+        chineseName: "总碳水化合物",
+        unit: "g",
+        description: "碳水化合物是提供能量的主要来源，包括简单糖和复杂的多糖。"
+    },
+    {
+        key: "sugars",
+        name: "Sugars",
+        chineseName: "糖分",
+        unit: "g",
+        description: "简单糖是碳水化合物的主要形式，提供快速能量。"
+    },
+    {
+        key: "fiber",
+        name: "Dietary Fiber",
+        chineseName: "膳食纤维",
+        unit: "g",
+        description: "纤维分为可溶性和不可溶性，支持消化健康和胆固醇控制。"
+    },
+    {
+        key: "starch",
+        name: "Starch",
+        chineseName: "淀粉",
+        unit: "g",
+        description: "淀粉是复杂碳水化合物，由植物储存的能量，消化后提供持久能量。"
+    },
+    {
+        key: "total_fats",
+        name: "Total Fats",
+        chineseName: "总脂肪",
+        unit: "g",
+        description: "脂肪是能量密集的营养素，为细胞膜提供结构，并在某些情况下保护器官。"
+    },
+    {
+        key: "saturated_fats",
+        name: "Saturated Fats",
+        chineseName: "饱和脂肪",
+        unit: "g",
+        description: "饱和脂肪在动物脂肪中常见，过量可能对心血管健康有害。"
+    },
+    {
+        key: "monounsaturated_fats",
+        name: "Monounsaturated Fats",
+        chineseName: "单不饱和脂肪",
+        unit: "g",
+        description: "单不饱和脂肪有益于心血管健康，降低坏胆固醇。"
+    },
+    {
+        key: "polyunsaturated_fats",
+        name: "Polyunsaturated Fats",
+        chineseName: "多不饱和脂肪",
+        unit: "g",
+        description: "多不饱和脂肪包括 Omega-3 和 Omega-6，支持脑部发育和抗炎。"
+    },
+    {
+        key: "cholesterol",
+        name: "Cholesterol",
+        chineseName: "胆固醇",
+        unit: "mg",
+        description: "胆固醇是细胞膜的组成部分，过量摄入可能导致心血管疾病。"
+    },
+    {
+        key: "total_proteins",
+        name: "Total Proteins",
+        chineseName: "总蛋白质",
+        unit: "g",
+        description: "蛋白质是细胞修复、生长和酶生成的重要成分，由氨基酸组成。"
+    },
 
     // 维生素 (Vitamins)
     { key: "vitamin_a", name: "Vitamin A", chineseName: "维生素 A", unit: "mcg", description: "支持视力健康、细胞生长和免疫功能。" },
