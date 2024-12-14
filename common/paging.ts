@@ -6,7 +6,7 @@ export const usePagination = (fetchApi: any, params?: any) => {
     // 数据状态
     const list = ref([]); // 所有数据
     const currentPage = ref(defaultCurrentPage || 1); // 当前页码
-    const pageSize = ref(5); // 每页大小
+    const pageSize = ref(params.pageSize || 10); // 每页大小
     const total = ref(0); // 数据总量
 
     // 状态管理

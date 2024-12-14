@@ -2,6 +2,9 @@
   <AConfigProvider
     :locale="locale == 'zh' ? zhCN : null"
     :theme="{
+      token: {
+        colorPrimary: '#00fa00',
+      },
       algorithm: colorMode == 'dark' ? theme.darkAlgorithm : '',
     }"
   >
@@ -21,7 +24,7 @@
 
       <Header></Header>
 
-      <div style="flex: 1; margin-top: var(--header)" class="shrink-0 mx-auto w-full">
+      <div style="flex: 1; margin-top: var(--header)" class="shrink-0 mx-auto w-full min-h-screen">
         <slot></slot>
         <!-- <ContentDoc :path="$route.path" /> -->
       </div>
@@ -51,11 +54,11 @@ function handleSubscribe() {
 </script>
 
 <style>
-html,
+/* html,
 body,
 #__nuxt {
   height: 100%;
-}
+} */
 .user-avatar img {
   height: 100%;
 }

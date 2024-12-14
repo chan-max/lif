@@ -14,7 +14,7 @@
 @media (prefers-color-scheme:dark) {
 
     .markdown-body,
-    [data-theme=dark] {
+    .dark,[data-theme=dark] {
         color-scheme: dark;
         --focus-outlineColor: #1f6feb;
         --fgColor-default: #f0f6fc;
@@ -72,7 +72,7 @@
 @media (prefers-color-scheme:light) {
 
     .markdown-body,
-    [data-theme=light] {
+    .light,[data-theme=light] {
         color-scheme: light;
         --focus-outlineColor: #0969da;
         --fgColor-default: #1f2328;

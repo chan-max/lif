@@ -9,7 +9,7 @@
       <!-- Logo -->
       <NuxtLink to="/" class="flex items-center space-x-2">
         <img
-          :src="colorMode == 'dark' ? '/logo-dark.svg' : '/logo.svg'"
+          :src="colorMode == 'dark' ? '/logo1-dark.svg' : '/logo1.svg'"
           alt="Logo"
           class="h-10 w-auto pr-2 max-w-[240px] md:max-w-none"
         />
@@ -98,7 +98,7 @@
     <UModal v-model="showLoginModal" title="User Login" :closable="true">
       <div class="p-6 space-y-4">
         <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
-          Login to Your Account
+          登录你的账号
         </h2>
 
         <!-- Username Input -->
@@ -107,12 +107,12 @@
             for="username"
             class="block text-sm font-medium text-gray-600 dark:text-gray-400"
           >
-            Username
+            账号
           </label>
           <UInput
             id="username"
             v-model="username"
-            placeholder="Enter your username"
+            placeholder="输入账号"
             class="mt-1 w-full"
           />
         </div>
@@ -123,12 +123,12 @@
             for="password"
             class="block text-sm font-medium text-gray-600 dark:text-gray-400"
           >
-            Password
+            密码
           </label>
           <UInput
             id="password"
             v-model="password"
-            placeholder="Enter your password"
+            placeholder="输入密码"
             type="password"
             class="mt-1 w-full"
           />
@@ -141,21 +141,21 @@
             class="text-custom-500 dark:text-custom-300"
             variant="link"
           >
-            Sign up
+            注册
           </UButton>
           <UButton
             @click="showLoginModal = false"
             class="text-custom-500 px-4"
             variant="link"
           >
-            Cancel
+            取消
           </UButton>
           <UButton
             @click="handleLogin"
             class="bg-custom-500 hover:bg-custom-600 text-white px-4 py-2 rounded transition"
             :loading="loginLoading"
           >
-            Login
+            登录
           </UButton>
         </div>
       </div>
@@ -236,7 +236,7 @@ const handleLogin = async () => {
     loginLoading.value = true;
     const res = await Api.login({ username: username.value, password: password.value });
     doLoginAction(res.data);
-    message.success("Login Successful");
+    message.success("登录成功");
     showLoginModal.value = false;
   } catch (e) {
     console.log(e);

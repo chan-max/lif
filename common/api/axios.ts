@@ -82,32 +82,55 @@ export const createDayrecord = () => new Promise(async (resolve, reject) => {
     resolve(res.data.data)
 })
 
-export const addRecordDetail = (post: any) => new Promise(async (resolve, reject) => {
 
+export const getDayrecord = (id?: any) => new Promise(async (resolve, reject) => {
+    let res = await api.get(`/api/dayrecord${id ? '/' + id : ''}`)
+    resolve(res.data.data)
+})
+
+export const getDayrecordList = (post: any) => new Promise(async (resolve, reject) => {
+    let res = await api.post(`/api/dayrecord/page`, post)
+    resolve(res.data)
+})
+
+
+export const addDayrecordDetail = (post: any) => new Promise(async (resolve, reject) => {
     post = {
         createTime: new Date(),
         updateTime: new Date(),
         id: uuidv4(),
         ...post
     }
+    let res = await api.post(`/api/dayrecord/add`, post).then(res => resolve(res.data.data)).catch(reject)
+})
 
-    let res = await api.post(`/api/dayrecord/add`, post)
+
+// 清除某个记录中的详情
+export const deleteDayrecordDetail = (post: any) => new Promise(async (resolve, reject) => {
+    let res = await api.post(`/api/dayrecord/delete-detail`, post)
     resolve(res.data.data)
 })
 
 
-export const getDayrecord = (id?: any) => new Promise(async (resolve, reject) => {
-    let res = await api.get(`/api/dayrecord${id ? '/' + 'id' : ''}`)
-    resolve(res.data.data)
-})
-
-
-
+// 获取食物信息，带分页
 export const getFoods = (post: any) => new Promise(async (resolve, reject) => {
     let res = await api.post(`/api/food/page`, post)
     resolve(res.data)
 })
 
 export default {
-    login, logout, getUserInfo, signup, updateUserInfo, getAgeGenderDistribution, getHeightDistribution, createDayrecord, getBasicConfig, getFoods, addRecordDetail, getDayrecord
+    login,
+    logout,
+    getUserInfo,
+    signup,
+    updateUserInfo,
+    getAgeGenderDistribution,
+    getHeightDistribution,
+    createDayrecord,
+    getBasicConfig,
+    getFoods,
+    addDayrecordDetail,
+    getDayrecord,
+    deleteDayrecordDetail,
+    getDayrecordList,
 };

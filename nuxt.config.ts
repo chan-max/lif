@@ -47,7 +47,7 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  css: ['~/public/fullpage.css', '~/assets/main.scss', '~/assets/md.css', 'animate.css/animate.min.css', 'v-calendar/dist/style.css', 'vue-data-ui/style.css'],
+  css: ['~/public/fullpage.css', '~/assets/main.scss', '~/assets/md.scss', 'animate.css/animate.min.css', 'v-calendar/dist/style.css', 'vue-data-ui/style.css'],
   build: {
     transpile: ['element-plus'], // 确保正确编译 Element Plus
   },
@@ -94,7 +94,7 @@ export default defineNuxtConfig({
   },
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
-    fallback: 'light', // fallback value if not system preference found
+    // fallback: 'light', // fallback value if not system preference found
     hid: 'nuxt-color-mode-script',
     globalName: '__NUXT_COLOR_MODE__',
     componentName: 'ColorScheme',

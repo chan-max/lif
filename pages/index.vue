@@ -14,10 +14,6 @@
       <h1 class="text-[4em] font-bold gradient-text gradient-text-color">
         你的人生健康助手
       </h1>
-      <p class="banner-subtitle gradient-text gradient-text-color">
-        提供最专业的服务，为您带来高效解决方案。
-      </p>
-
       <UButton :ui="{ rounded: 'rounded-full' }" size="xl" variant="solid" class="mt-4"
         ><span> 快速开始 </span></UButton
       >

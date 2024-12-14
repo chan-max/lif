@@ -1,20 +1,17 @@
 <template>
-  <footer :class="[ 'py-4']">
+  <footer :class="['py-4']">
     <div
       class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4 space-y-4 md:space-y-0"
     >
       <!-- Footer Logo and Description -->
       <div class="text-center md:text-left">
         <h2 class="text-lg font-bold">Lif Health Assistant</h2>
-        <p class="text-xs mt-1">
-          Thanks for supporting us
-        </p>
+        <p class="text-xs mt-1">Thanks for supporting us</p>
       </div>
 
       <!-- Footer Navigation -->
       <nav class="flex flex-wrap justify-center md:justify-end space-x-4">
-        <NuxtLink to="/features" class="footer-link">Features</NuxtLink>
-        <NuxtLink to="/resources" class="footer-link">Resources</NuxtLink>
+        <NuxtLink to="/about" class="footer-link">About </NuxtLink>
         <NuxtLink to="/support" class="footer-link">Support</NuxtLink>
         <NuxtLink to="/contact" class="footer-link">Contact Us</NuxtLink>
       </nav>
@@ -22,19 +19,14 @@
 
     <!-- Footer Copyright -->
     <div class="border-t mt-4 pt-3 text-center">
-      <p class="text-xs">
-        &copy; 2024 Lif Health Assistant. All rights reserved.
-      </p>
-      <p class="text-xs mt-1">
-        Your life health assistant
-      </p>
+      <p class="text-xs">&copy; 2024 Lif Health Assistant. All rights reserved.</p>
+      <p class="text-xs mt-1">Your life health assistant</p>
     </div>
   </footer>
 </template>
 
 <script setup>
 import { computed } from "vue";
-
 </script>
 
 <style scoped>

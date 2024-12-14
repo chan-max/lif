@@ -1,0 +1,134 @@
+/* 全局字体和排版基础 */
+body {
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+    /* 通用无衬线字体 */
+    line-height: 1.6;
+    /* 增加行间距，提高可读性 */
+    margin: 0;
+    padding: 0;
+}
+
+/* 标题样式优化 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Poppins', sans-serif;
+    /* 标题使用更显眼的字体 */
+    margin-bottom: 0.1em;
+    /* 增加标题与内容的间距 */
+    font-weight: 700;
+    /* 突出标题层次感 */
+}
+
+/* 各级标题的大小设置 */
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+h4 {
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1.25rem;
+}
+
+h6 {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* 段落文字样式 */
+p {
+    font-size: 1rem;
+    /* 通用字体大小 */
+    /* 添加段落间距 */
+    /* 段落对齐 */
+}
+
+/* 链接样式 */
+a {
+    text-decoration: none;
+    /* 移除默认下划线 */
+}
+
+a:hover {
+    text-decoration: underline;
+    /* 悬停时显示下划线 */
+}
+
+/* 列表样式 */
+ul,
+ol {
+    margin: 0 0 1.5em;
+    padding-left: 1.5em;
+    /* 增加缩进 */
+}
+
+li {
+    margin-bottom: 0.5em;
+    /* 增加列表项的间距 */
+}
+
+/* 引用样式 */
+blockquote {
+    font-style: italic;
+    margin: 1.5em 0;
+    padding-left: 1em;
+    border-left: 4px solid;
+}
+
+/* 小型文本样式 */
+small {
+    font-size: 0.875rem;
+    /* 更小的字体 */
+}
+
+/* 字体强调 */
+strong {
+    font-weight: 700;
+    /* 加粗强调 */
+}
+
+em {
+    font-style: italic;
+    /* 斜体强调 */
+}
+
+/* 行内代码样式 */
+code {
+    font-family: 'Courier New', monospace;
+    /* 等宽字体 */
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+}
+
+/* 标题和段落的响应式优化 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.95rem;
+    }
+}

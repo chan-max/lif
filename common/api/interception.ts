@@ -38,7 +38,7 @@ export const defaultResponseInterceptors = (response) => {
     if (response?.data?.code === 401) {
         let loginStore = useLoginStatusStore()
         loginStore.logout()
-        message.error('please login')
+        message.error('请登录')
         return Promise.reject()
     }
 

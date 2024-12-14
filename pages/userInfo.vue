@@ -103,8 +103,10 @@
         <small v-if="errors.weight" class="text-red-500">{{ errors.weight }}</small>
       </div>
 
+      <label>身高体重是变化比较频繁的数据,应该在个人记录修改</label>
+
       <!-- Save Button -->
-      <div class="flex justify-center">
+      <div class="flex justify-center pt-4">
         <UButton
           :loading="loading"
           type="submit"
