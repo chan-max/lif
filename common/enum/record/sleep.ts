@@ -8,7 +8,7 @@
 
 export interface DayrecordSleep {
     type: 'sleep',
-    start: Date,
-    end: Date,
+    startTime: Date,
+    endTime: Date,
     duration: number,
 }

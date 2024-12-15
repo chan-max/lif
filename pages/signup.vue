@@ -1,16 +1,16 @@
 <template>
   <div class="p-8 max-w-lg mx-auto">
-    <h1 class="text-2xl font-bold mb-6 text-center">User Registration</h1>
+    <h1 class="text-2xl font-bold mb-6 text-center"> 注册一个账号 </h1>
     <form @submit.prevent="handleSubmit">
       <!-- Username -->
       <div class="mb-6">
         <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
-          Username
+          用户名
         </label>
         <UInput
           id="username"
           v-model="form.username"
-          placeholder="Enter your username"
+          placeholder="5 - 15 位"
           :maxLength="15"
           :minLength="5"
           required
@@ -22,13 +22,13 @@
       <!-- Password -->
       <div class="mb-6">
         <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
-          Password
+          密码
         </label>
         <UInput
           id="password"
           v-model="form.password"
           type="password"
-          placeholder="Enter your password"
+          placeholder="密码"
           :maxLength="15"
           :minLength="5"
           required
@@ -40,13 +40,13 @@
       <!-- Confirm Password -->
       <div class="mb-6">
         <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-2">
-          Confirm Password
+          确认密码
         </label>
         <UInput
           id="confirmPassword"
           v-model="form.confirmPassword"
           type="password"
-          placeholder="Confirm your password"
+          placeholder="确认密码"
           required
           class="w-full"
         />
@@ -61,7 +61,7 @@
           type="submit"
           class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600"
         >
-          Register
+          注册
         </UButton>
       </div>
     </form>
@@ -113,9 +113,9 @@ async function handleSubmit() {
 
   try {
     await Api.signup(toRaw(form.value));
-    message.success("signup successful");
+    message.success("注册成功");
   } catch (e) {
-    message.error("signup failed");
+    message.error("注册失败");
   }
 }
 </script>

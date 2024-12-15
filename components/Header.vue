@@ -3,7 +3,11 @@
   <header
     :class="`py-4 shadow-md z-10`"
     class="lif-header fixed w-full"
-    style="border-bottom: 1px solid rgba(255, 255, 255, 0.1); height: var(--header)"
+    style="
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      height: var(--header);
+      backdrop-filter: blur(6px);
+    "
   >
     <div class="mx-auto flex justify-between items-center px-8 h-full">
       <!-- Logo -->
@@ -262,6 +266,6 @@ header {
 }
 .dark header {
   color: white;
-  background-color: #111;
+  background-color: rgba(18, 18, 18, 0.3);
 }
 </style>

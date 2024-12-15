@@ -94,6 +94,13 @@ export const getDayrecordList = (post: any) => new Promise(async (resolve, rejec
 })
 
 
+// 获取近7天的记录
+export const getDayrecordLastest7 = (post: any) => new Promise(async (resolve, reject) => {
+    let res = await api.get(`/api/dayrecord/latest-7`, post)
+    resolve(res.data.data)
+})
+
+
 export const addDayrecordDetail = (post: any) => new Promise(async (resolve, reject) => {
     post = {
         createTime: new Date(),
@@ -133,4 +140,5 @@ export default {
     getDayrecord,
     deleteDayrecordDetail,
     getDayrecordList,
+    getDayrecordLastest7
 };

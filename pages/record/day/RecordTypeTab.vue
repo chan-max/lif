@@ -1,19 +1,19 @@
 <template>
   <div class="tabs-container" ref="tabsContainer">
-    <div class="tabs flex gap-4 py-4">
+    <div class="tabs flex gap-6 p-4">
       <div
-        class="tab-item relative flex items-center justify-center gap-2 px-6 py-2 cursor-pointer transition-transform ease-in-out duration-300"
+        class="tab-item relative flex items-center justify-center gap-1 px-4 py-2 cursor-pointer transition-transform ease-in-out duration-300"
         v-for="(item, index) in items"
         :key="index"
         :class="{
-          'activ transform scale-125 -translate-y-1.5 font-bold':
+          'activ transform scale-125 -translate-y-1/4 font-bold':
             modelValue === item.type,
         }"
         @click="selectTab(index, item.type)"
         :ref="(el) => (tabRefs[index] = el)"
       >
         <img v-if="item.logo" :src="item.logo" alt="tab-logo" class="tab-logo w-6 h-6" />
-        <span class="tab-label text-sm font-medium">{{ item.label }}</span>
+        <span class="tab-label text-xs font-medium">{{ item.label }}</span>
         <div
           v-if="modelValue === item.type"
           class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-4/5 h-1 bg-green-400 rounded-full transition-all duration-300"
@@ -61,6 +61,7 @@ const scrollToCenter = (index) => {
 </script>
 
 <style scoped>
+/* 自定义滚动条样式 */
 /* 自定义滚动条样式 */
 .tabs-container {
   overflow-x: auto; /* 允许横向滚动 */

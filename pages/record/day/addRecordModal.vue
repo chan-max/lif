@@ -1,5 +1,9 @@
 <template>
-  <UModal v-model="showRecordTodayAddForm" fullscreen>
+  <UModal
+    v-model="showRecordTodayAddForm"
+    fullscreen
+    :ui="{ background: 'bg-white dark:bg-black' }"
+  >
     <UCard
       fullscreen
       :ui="{
@@ -32,17 +36,14 @@
         </RecordTypeTab>
 
         <template v-if="currentRecordType == 'sleep'">
-          <UForm :schema="schema" :state="state" class="space-y-4" @submit="onSubmit">
-            <UFormGroup label="Email" name="email">
-              <UInput v-model="state.email" />
-            </UFormGroup>
-
-            <UFormGroup label="Password" name="password">
-              <UInput v-model="state.password" type="password" />
-            </UFormGroup>
-          </UForm>
+          <sleepForm v-model="form"></sleepForm>
         </template>
 
+        <template v-if="currentRecordType == 'smoke'">
+          <smokeForm v-model="form"></smokeForm>
+        </template>
+
+        {{ form }}
         <UButton block @click="ensureAdd" :loading="submitLoading">
           确认添加该记录
         </UButton>
@@ -56,6 +57,9 @@ import { showRecordTodayAddForm } from "@/common/store";
 import { RecordTypeOptions } from "@/common/enum/record/dayrecord";
 import Api from "@/common/api/axios";
 import RecordTypeTab from "./RecordTypeTab.vue";
+import sleepForm from "./addForm/sleep.vue";
+import smokeForm from "./addForm/smoke.vue";
+import { useLocalStorage } from "@vueuse/core";
 
 const emits = defineEmits(["add-success"]);
 
@@ -63,23 +67,18 @@ const route = useRoute();
 const router = useRouter();
 
 const submitLoading = ref(false);
-const json = ref();
 const form = ref({});
 
-const schema = ref({});
+const currentRecordType = useLocalStorage("_lif_tabCurrentRecordType", "sleep");
 
-const state = ref({});
-
-const currentRecordType = ref("sleep");
+watch(currentRecordType, () => {
+  form.value = {};
+});
 
 async function ensureAdd() {
-  let getJSON = new Function(`return ${json.value}`);
-
   try {
-    let j = getJSON();
     submitLoading.value = true;
     await Api.addDayrecordDetail({
-      ...j,
       type: currentRecordType.value,
       ...form.value,
     });

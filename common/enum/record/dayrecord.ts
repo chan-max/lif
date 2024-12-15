@@ -23,9 +23,26 @@ export enum Daycords {
     // 心率脉搏
     PULSE = 'pulse',
 
-
     // 心情
-    MOOD = 'mood'
+    MOOD = 'mood',
+
+    // 吸烟
+    SMOKE = 'smoke',
+
+    // 喝酒
+    DRINK = 'drink',
+
+    // 生病
+    DISEASE = 'disease',
+
+    // 事件
+    EVENT = 'event',
+
+    // 标记
+    MARK = 'mark',
+
+    // 标记
+    SPORT = 'sport',
 }
 
 
@@ -83,8 +100,45 @@ export const RecordTypeOptions = [
 
     {
         type: 'period',
-        label: '女生生理期',
+        label: '生理期',
         logo: '/img/record/period.svg',
+    },
+
+
+    {
+        type: 'smoke',
+        label: '吸烟',
+        logo: '/img/record/smoke.svg',
+    },
+
+    {
+        type: 'drink',
+        label: '喝酒',
+        logo: '/img/record/drink.svg',
+    },
+
+    {
+        type: 'disease',
+        label: '生病',
+        logo: '/img/record/disease.svg',
+    },
+
+    {
+        type: 'event',
+        label: '事件',
+        logo: '/img/record/event.svg',
+    },
+
+    {
+        type: 'mark',
+        label: '标记',
+        logo: '/img/record/mark.svg',
+    },
+
+    {
+        type: 'sport',
+        label: '运动',
+        logo: '/img/record/sport.svg',
     },
 ]
 
