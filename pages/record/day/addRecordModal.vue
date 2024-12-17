@@ -71,6 +71,12 @@ const form = ref({});
 
 const currentRecordType = useLocalStorage("_lif_tabCurrentRecordType", "sleep");
 
+const props = defineProps({
+  date: {
+    default: "",
+  },
+});
+
 watch(currentRecordType, () => {
   form.value = {};
 });
@@ -78,7 +84,7 @@ watch(currentRecordType, () => {
 async function ensureAdd() {
   try {
     submitLoading.value = true;
-    await Api.addDayrecordDetail({
+    await Api.addDayrecordDetail(props.date, {
       type: currentRecordType.value,
       ...form.value,
     });

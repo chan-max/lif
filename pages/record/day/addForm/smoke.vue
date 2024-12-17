@@ -31,7 +31,12 @@
         </template>
       </a-date-picker>
     </a-form-item>
-
+    <a-form-item>
+      <template #label>
+        <div class="label">吸烟数量</div>
+      </template>
+      <a-input v-model:value="smokeCount" placeholder="吸了多少" rows="4" type="number" min="0"/>
+    </a-form-item>
     <a-form-item>
       <template #label>
         <div class="label">相关描述</div>
@@ -62,12 +67,15 @@ const emit = defineEmits(["update:modelValue"]);
 
 const time = ref(props.modelValue.time);
 const description = ref(props.modelValue.description);
+const smokeCount = ref(1)
+
 
 // Watch for changes and emit updated values
 watch([time, description], () => {
   emit("update:modelValue", {
     time: time.value,
     description: description.value,
+    smokeCount:smokeCount.value
   });
 });
 

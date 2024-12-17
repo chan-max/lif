@@ -36,7 +36,6 @@
 <script setup>
 import { computed } from "vue";
 import { useLoginStatusStore } from "~/common/store/login";
-import * as echarts from "echarts";
 
 const loginStore = useLoginStatusStore();
 

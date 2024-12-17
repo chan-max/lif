@@ -106,13 +106,19 @@ onMounted(() => {
 });
 
 // Watch for changes in the range and description, and emit the updated value
-watch([range, description], () => {
-  emit("update:modelValue", {
-    startTime: range.value[0],
-    endTime: range.value[1],
-    description: description.value,
-  });
-});
+watch(
+  [range, description],
+  () => {
+    emit("update:modelValue", {
+      startTime: range.value[0],
+      endTime: range.value[1],
+      description: description.value,
+    });
+  },
+  {
+    deep: true,
+  }
+);
 
 // Predefined time ranges (e.g., 10 minutes, 30 minutes, 1 hour, etc.)
 const timePresets = [
@@ -213,6 +219,7 @@ function calendarChange(e) {
   } else {
     focusStartTime.value = true;
   }
+  range.value = e
 }
 </script>
 

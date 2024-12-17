@@ -1,6 +1,6 @@
 import { ref, type Ref } from 'vue';
 
-export function usePromise<T, Args extends any[]>(promiseFn: (...args: Args) => Promise<T>) {
+export function usePromise<T, Args extends any[]>(promiseFn: (...args: Args) => Promise<T>, options?: Record<string, any>) {
     const data: Ref<T | null> = ref(null); // 存储结果数据
     const loading: Ref<boolean> = ref(false); // 是否处于加载中
     const error: Ref<Error | null> = ref(null); // 存储错误信息
@@ -11,8 +11,14 @@ export function usePromise<T, Args extends any[]>(promiseFn: (...args: Args) => 
         error.value = null;
         params.value = args;
 
+
         promiseFn(...args)
             .then((result) => {
+
+                if (options?.onResolve) {
+                    result = options.onResolve(result)
+                }
+
                 data.value = result;
             })
             .catch((err) => {

@@ -84,7 +84,7 @@
       </template>
     </UTable>
 
-    <AddRecordModal @add-success="init"></AddRecordModal>
+    <AddRecordModal @add-success="init" :date="$route.params.date"></AddRecordModal>
   </div>
 </template>
 

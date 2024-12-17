@@ -1,117 +1,158 @@
 <template>
-  <div class="sleep-record-container">
-    <h2>记录睡眠时间</h2>
-    <VDatePicker
-      v-model.range="sleepRange"
-      mode="dateTime"
-      :is-dark="{ selector: 'html', darkClass: 'dark' }"
-    />
+  <div class="flex h-screen text-white">
+    <!-- 侧边栏 -->
+    <aside class="w-64 flex flex-col p-10 gap-6 bg-[#12131C] overflow-auto">
+      <!-- Logo -->
+      <div class="text-2xl font-semibold text-white mb-4">Zerologic</div>
 
-    <UButton color="white" variant="solid" @click="recordSleep" class="mt-4"
-      >记录睡眠</UButton
-    >
-    <div v-if="sleepDuration" class="sleep-summary">
-      <p>
-        您从 <strong>{{ formattedStart }}</strong> 睡到了
-        <strong>{{ formattedEnd }}</strong
-        >。
-      </p>
-      <p>
-        总共睡了
-        <strong>{{ sleepDuration.hours }} 小时 {{ sleepDuration.minutes }} 分钟</strong>。
-      </p>
-    </div>
+      <!-- 导航菜单 -->
+      <nav class="flex flex-col gap-4">
+        <div class="flex items-center gap-3 p-2 rounded-lg bg-[#1E1F29] cursor-pointer">
+          <div>🏠</div>
+          <span>Dashboard</span>
+        </div>
+        <div
+          class="flex items-center gap-3 p-2 rounded-lg cursor-pointer hover:bg-[#21232F]"
+        >
+          <div>📦</div>
+          <span>Order</span>
+        </div>
+        <div
+          class="flex items-center gap-3 p-2 rounded-lg cursor-pointer hover:bg-[#21232F]"
+        >
+          <div>👤</div>
+          <span>Customer</span>
+        </div>
+        <div
+          class="flex items-center gap-3 p-2 rounded-lg cursor-pointer hover:bg-[#21232F]"
+        >
+          <div>📊</div>
+          <span>Balance</span>
+        </div>
+      </nav>
+
+      <!-- 设置 -->
+      <div class="mt-auto">
+        <div
+          class="flex items-center gap-3 p-2 rounded-lg cursor-pointer hover:bg-[#21232F]"
+        >
+          <div>⚙️</div>
+          <span>Settings</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 主内容区域 -->
+    <main class="flex-1 p-6">
+      <!-- 顶部统计卡片 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div
+          class="bg-gradient-to-br from-[#1E1F29] to-[#252736] p-4 rounded-2xl shadow-xl"
+        >
+          <p class="text-gray-400">今日睡眠记录</p>
+          <h2 class="text-2xl font-bold">245</h2>
+        </div>
+        <div
+          class="bg-gradient-to-br from-[#1E1F29] to-[#27293D] p-4 rounded-2xl shadow-xl"
+        >
+          <p class="text-gray-400">昨日睡眠时长</p>
+          <h2 class="text-2xl font-bold">1,450,665</h2>
+        </div>
+        <div
+          class="bg-gradient-to-br from-[#1E1F29] to-[#313447] p-4 rounded-2xl shadow-xl"
+        >
+          <p class="text-gray-400">我的建议睡眠时间</p>
+          <h2 class="text-2xl font-bold">1,778,776</h2>
+        </div>
+        <div
+          class="bg-gradient-to-br from-[#1E1F29] to-[#2A2D3F] p-4 rounded-2xl shadow-xl"
+        >
+          <p class="text-gray-400">昨日睡眠状态</p>
+          <h2 class="text-2xl font-bold">$ 455.098K</h2>
+        </div>
+      </div>
+
+      <!-- 图表和详细卡片 -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
+        <!-- 图表区域 -->
+        <div
+          class="bg-gradient-to-br from-[#1E1F29] to-[#2A2D3F] rounded-2xl p-6 col-span-2 shadow-xl"
+        >
+          <h3 class="text-lg font-semibold mb-4">Sales Statistic</h3>
+          <div class="h-40 bg-[#1E1F29] rounded-lg flex items-center justify-center">
+            <span>图表区域</span>
+          </div>
+        </div>
+
+        <!-- 账户余额 -->
+        <div
+          class="bg-gradient-to-br from-[#1E1F29] to-[#313447] rounded-2xl p-6 shadow-xl"
+        >
+          <h3 class="text-lg font-semibold mb-4">Account Balance</h3>
+          <div class="text-3xl font-bold mb-2">$ 1,450,665</div>
+          <p class="text-gray-400">Balance</p>
+        </div>
+      </div>
+
+      <!-- 表格和通知区域 -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <!-- Top Leader -->
+        <div
+          class="bg-gradient-to-br from-[#1E1F29] to-[#27293D] rounded-2xl p-6 col-span-2 shadow-xl"
+        >
+          <h3 class="text-lg font-semibold mb-4">Top Leader</h3>
+          <ul>
+            <li class="flex justify-between py-2 border-b border-gray-700">
+              <span>Charlie Lubin</span>
+              <span class="text-green-400">+2.89%</span>
+            </li>
+            <li class="flex justify-between py-2 border-b border-gray-700">
+              <span>Ruben Levin</span>
+              <span class="text-green-400">+2.65%</span>
+            </li>
+            <li class="flex justify-between py-2">
+              <span>Alfredo George</span>
+              <span class="text-green-400">+1.90%</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 消息通知 -->
+        <div
+          class="bg-gradient-to-br from-[#1E1F29] to-[#252736] rounded-2xl p-6 shadow-xl"
+        >
+          <h3 class="text-lg font-semibold mb-4">Message Box</h3>
+          <ul>
+            <li class="flex justify-between py-2 border-b border-gray-700">
+              <span>Paityn Herwitz</span>
+              <span class="text-gray-400 text-sm">Just now</span>
+            </li>
+            <li class="flex justify-between py-2 border-b border-gray-700">
+              <span>Gretchen George</span>
+              <span class="text-gray-400 text-sm">20 min</span>
+            </li>
+            <li class="flex justify-between py-2">
+              <span>Ashlynn Schleifer</span>
+              <span class="text-gray-400 text-sm">2 days</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import dayjs from "dayjs"; // 用于时间格式化
-
-// 响应式变量：睡眠时间范围
-const sleepRange = ref({
-  start: new Date(),
-  end: new Date(),
+// 逻辑部分
+import Api, { usePromise } from "@/common/api/axios";
+import { getPreviousDay, getDayRecordDateKey } from "@/common/date";
+const { data, init } = usePromise(() => {
+  return Api.getDayrecord(getDayRecordDateKey());
 });
 
-// 计算睡眠时长
-const sleepDuration = computed(() => {
-  if (sleepRange.value.start && sleepRange.value.end) {
-    const start = dayjs(sleepRange.value.start);
-    const end = dayjs(sleepRange.value.end);
-    const diffMs = end.diff(start); // 获取时间差（毫秒）
-    const diffMinutes = Math.floor(diffMs / (1000 * 60)); // 转换为分钟
-    const hours = Math.floor(diffMinutes / 60); // 计算小时数
-    const minutes = diffMinutes % 60; // 计算分钟数
-    return {
-      hours,
-      minutes,
-    };
-  }
-  return null;
-});
-
-// 格式化时间显示
-const formattedStart = computed(() => {
-  return sleepRange.value.start
-    ? dayjs(sleepRange.value.start).format("YYYY-MM-DD HH:mm")
-    : "";
-});
-
-const formattedEnd = computed(() => {
-  return sleepRange.value.end
-    ? dayjs(sleepRange.value.end).format("YYYY-MM-DD HH:mm")
-    : "";
-});
-
-// 记录睡眠时间的方法
-const recordSleep = () => {
-  if (sleepRange.value.start && sleepRange.value.end) {
-    alert(
-      `睡眠时间已记录：从 ${formattedStart.value} 到 ${formattedEnd.value}，共 ${sleepDuration.value.hours} 小时 ${sleepDuration.value.minutes} 分钟`
-    );
-  } else {
-    alert("请选择完整的时间范围！");
-  }
-};
+init();
 </script>
 
 <style scoped>
-.sleep-record-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  margin-bottom: 20px;
-  color: #333;
-}
-
-UButton {
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-UButton:hover {
-  transform: scale(1.05);
-}
-
-.sleep-summary {
-  margin-top: 20px;
-  text-align: center;
-  color: #555;
-}
-
-.sleep-summary p {
-  margin: 5px 0;
-  font-size: 16px;
-}
+/* 可根据需求添加自定义样式 */
 </style>

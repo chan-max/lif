@@ -17,11 +17,12 @@ export default defineNuxtConfig({
       title: `${config.brandName} - ${config.tagline}`,
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { hid: 'description', name: 'description', content: config.metaDescription },
         { hid: 'keywords', name: 'keywords', content: config.metaKeywords },
-
-        { name: 'google-site-verification', content: 'RxzvybBzhRLs6_sRKyieVlgNGdkRfxpPM819uINVRE8' },
+        {
+          name: "viewport",
+          content: "width=device-width, initial-scale=1.0, user-scalable=no"
+        }
       ],
       htmlAttrs: {
         lang: 'en',
@@ -101,5 +102,9 @@ export default defineNuxtConfig({
     classPrefix: '',
     classSuffix: '-mode',
     storageKey: 'nuxt-color-mode'
+  },
+  devServer: {
+    https: true,
+    host: 'localhost',
   },
 })
