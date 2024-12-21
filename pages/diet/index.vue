@@ -1,9 +1,8 @@
 <template>
   <div class="flex text-white">
     <!-- 侧边栏 -->
-    <aside class="w-64 flex flex-col p-6 gap-6 overflow-auto">
+    <!-- <aside class="w-64 flex flex-col p-6 gap-6 overflow-auto">
       <div class="text-2xl font-semibold text-white mb-2">Zerologic</div>
-      <!-- 导航菜单 -->
       <nav class="flex flex-col gap-4">
         <div class="flex items-center gap-3 p-2 rounded-lg bg-[#1E1F29] cursor-pointer">
           <div>🏠</div>
@@ -22,7 +21,7 @@
           <span>Customer</span>
         </div>
       </nav>
-    </aside>
+    </aside> -->
 
     <!-- 主内容区域 -->
     <main class="flex-1 p-6">
@@ -31,9 +30,7 @@
         <!-- 左侧大卡片 -->
         <div class="card card-lg lg:col-span-2">
           <h3 class="text-sm font-semibold mb-8">近一个月睡眠曲线</h3>
-          <div class="flex-1 flex items-center justify-center">
-            <EChart-Sleep30></EChart-Sleep30>
-          </div>
+          <div class="flex-1 flex items-center justify-center"></div>
         </div>
 
         <!-- 右侧两个小卡片 -->
@@ -71,14 +68,12 @@
       <!-- 第二行 -->
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         <div class="card card-lg lg:col-span-2">
-          <h3 class="text-sm font-semibold mb-2">睡眠趋势统计</h3>
-          <div class="h-48 bg-[#1E1F29] rounded-lg flex items-center justify-center">
-            图表区域
-          </div>
+          <h3 class="text-sm font-semibold mb-2"></h3>
+
         </div>
         <div class="card card-lg">
-          <h3 class="text-sm font-semibold mb-2">近一周睡眠时长</h3>
-          <EChart-Latest7DaySleep></EChart-Latest7DaySleep>
+          <h3 class="text-sm font-semibold mb-6">常见食物元素</h3>
+          <Chart-FoodBasicCompositionTable></Chart-FoodBasicCompositionTable>
         </div>
       </div>
 
@@ -99,7 +94,6 @@
         </div>
         <div class="card card-lg">
           <h3 class="text-sm font-semibold mb-2">常规睡眠时间段分布</h3>
-          <EChart-SleepDurationQuality></EChart-SleepDurationQuality>
         </div>
       </div>
 

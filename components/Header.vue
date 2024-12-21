@@ -13,22 +13,22 @@
       <!-- Logo -->
       <NuxtLink to="/" class="flex items-center space-x-2">
         <img
-          :src="colorMode == 'dark' ? '/logo1-dark.svg' : '/logo1.svg'"
+          :src="colorMode == 'dark' ? '/logo6-dark.svg' : '/logo6.svg'"
           alt="Logo"
-          class="h-10 w-auto pr-2 max-w-[240px] md:max-w-none"
+          class="h-10 w-auto pr-2 max-w-[240px] md:max-w-none hover:scale-105 transition-all"
         />
       </NuxtLink>
 
       <!-- Navigation -->
       <div class="flex items-center space-x-4">
         <!-- Tabs for PC -->
-        <nav class="hidden md:flex space-x-2 mr-8">
+        <nav class="hidden md:flex space-x-2 mr-4">
           <button
             v-for="(tab, index) in tabs"
             :key="index"
             @click="navigateTab(index, tab)"
             :class="[
-              'transition rounded-lg text-sm font-medium px-3 py-2',
+              'transition rounded-lg text-xs font-medium px-2 py-1',
               $route.path === tab.path
                 ? 'bg-custom-200 text-black dark:bg-custom-600 dark:text-white'
                 : 'text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white',
@@ -41,7 +41,7 @@
         <ColorMode />
 
         <!-- Language Selector -->
-        <select
+        <!-- <select
           v-model="currentLang"
           @change="changeLanguage"
           class="border border-gray-300 dark:border-gray-600 rounded-md py-1 px-2 text-sm bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300"
@@ -49,7 +49,7 @@
           <option v-for="option in langOptions" :key="option.value" :value="option.value">
             {{ option.label }}
           </option>
-        </select>
+        </select> -->
 
         <!-- User Dropdown or Login -->
         <div>
@@ -88,7 +88,7 @@
           </template>
           <template v-else>
             <button
-              class="bg-custom-500 hover:bg-custom-600 text-white px-4 py-2 rounded transition text-sm font-medium"
+              class="bg-custom-500 hover:bg-custom-600 text-white px-4 py-2 rounded-full transition text-sm font-medium"
               @click="showLoginModal = true"
             >
               {{ $t("common.login") }}
@@ -156,7 +156,7 @@
           </UButton>
           <UButton
             @click="handleLogin"
-            class="bg-custom-500 hover:bg-custom-600 text-white px-4 py-2 rounded transition"
+            class="bg-custom-500 hover:bg-custom-600 text-white px-4 py-2 transition rounded-full"
             :loading="loginLoading"
           >
             登录

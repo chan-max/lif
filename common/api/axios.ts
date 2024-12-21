@@ -99,9 +99,9 @@ export const getDayrecordList = (post: any) => new Promise(async (resolve, rejec
 
 
 // 获取近7天的记录
-export const getDayrecordLastest7 = (post?: any) => new Promise(async (resolve, reject) => {
+export const getDayrecordLastest = (post?: any, count = 7) => new Promise(async (resolve, reject) => {
     try {
-        let res = await api.get(`/api/dayrecord/latest-7`, post)
+        let res = await api.get(`/api/dayrecord/latest/${count}`, post)
         resolve(res.data.data)
     } catch (e) {
         reject(e)
@@ -134,6 +134,13 @@ export const getFoods = (post: any) => new Promise(async (resolve, reject) => {
     resolve(res.data)
 })
 
+
+export const getAnalysis = (post: any) => new Promise(async (resolve, reject) => {
+    let res = await api.get(`/api/dayrecord/analysis`, post)
+    resolve(res.data.data)
+})
+
+
 export default {
     login,
     logout,
@@ -149,8 +156,9 @@ export default {
     getDayrecord,
     deleteDayrecordDetail,
     getDayrecordList,
-    getDayrecordLastest7
+    getDayrecordLastest,
+    getAnalysis
 };
 
 
-export {usePromise} from '@/common/hooks/promise'
+export { usePromise } from '@/common/hooks/promise'

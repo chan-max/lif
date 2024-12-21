@@ -48,7 +48,7 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  css: ['~/public/fullpage.css', '~/assets/main.scss', '~/assets/md.scss', 'animate.css/animate.min.css', 'v-calendar/dist/style.css', 'vue-data-ui/style.css'],
+  css: ['~/public/fullpage.css', '~/assets/main.scss', '~/assets/md.scss', 'animate.css/animate.min.css', 'v-calendar/dist/style.css', 'vue-data-ui/style.css', 'cal-heatmap/cal-heatmap.css',],
   build: {
     transpile: ['element-plus'], // 确保正确编译 Element Plus
   },

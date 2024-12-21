@@ -9,7 +9,7 @@ import Api from "@/common/api/axios";
 import { usePromise } from "@/common/hooks/promise";
 import { sleepCategories } from "~/common/enum/record/sleep";
 
-let { data: data, init: init } = usePromise(Api.getDayrecordLastest7, {
+let { data: data, init: init } = usePromise(Api.getDayrecordLastest, {
   onResolve(res) {},
 });
 
@@ -87,16 +87,16 @@ const config = ref({
     //   height: 500,
     //   width: 800,
       padding: { top: 24, right: 10, bottom: 10, left: 36 },
-      title: {
-        text: "近一周睡眠统计",
-        color: "#ffffff",
-        fontSize: 20,
-        bold: true,
-        textAlign: "left",
-        paddingLeft: 0,
-        paddingRight: 0,
-        subtitle: { color: "#A1A1A1", text: "", fontSize: 16, bold: false },
-      },
+    //   title: {
+    //     text: "近一周睡眠统计",
+    //     color: "#ffffff",
+    //     fontSize: 20,
+    //     bold: true,
+    //     textAlign: "left",
+    //     paddingLeft: 0,
+    //     paddingRight: 0,
+    //     subtitle: { color: "#A1A1A1", text: "", fontSize: 16, bold: false },
+    //   },
       legend: {
         show: true,
         bold: false,

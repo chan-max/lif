@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from "vue";
-import { foodCompositions } from "@/common/enum/food.ts";
+import { foodCompositions } from "@/common/enum/food/food.ts";
 
 const config = ref({
   responsiveBreakpoint: 400,
@@ -152,3 +152,4 @@ const dataset = ref({
     </div>
   </div>
 </template>
+~/common/enum/food/food

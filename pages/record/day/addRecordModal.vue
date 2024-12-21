@@ -5,7 +5,7 @@
     :ui="{ background: 'bg-white dark:bg-black' }"
   >
     <UCard
-      fullscreen
+        class="!bg-[#12131c]"
       :ui="{
         base: 'h-full flex flex-col',
         rounded: '',

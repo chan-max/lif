@@ -14,7 +14,7 @@
       <Header></Header>
 
       <div
-        style="flex: 1; margin-top: var(--header)"
+        style=" margin-top: var(--header)"
         class="shrink-0 mx-auto w-full min-h-screen"
       >
         <slot></slot>

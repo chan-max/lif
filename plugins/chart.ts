@@ -59,7 +59,6 @@ export default defineNuxtPlugin(() => {
         // 渲染器
         CanvasRenderer,
         SVGRenderer,
-
         // 图表类型
         BarChart,
         LineChart,

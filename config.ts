@@ -32,8 +32,8 @@ export default defineConfig({
     },
 
 
-    brandName: "Lif Ai",
-    tagline: "Your life health assistant",
+    brandName: "LifCare",
+    tagline: "你的人生健康助手",
     apiKey: '',
     apiURL: '',
 

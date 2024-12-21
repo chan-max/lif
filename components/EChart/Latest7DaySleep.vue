@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <v-chart class="chart" :option="option" />
+    <v-chart class="chart" :option="option" autoresize />
   </ClientOnly>
 </template>
 
@@ -10,7 +10,7 @@ import Api from "@/common/api/axios"; // 假设Api是你的接口请求工具
 import { usePromise } from "@/common/hooks/promise";
 import { sleepCategories } from "~/common/enum/record/sleep";
 // 异步接口获取数据
-const { data: rawData, loading, error, init } = usePromise(Api.getDayrecordLastest7);
+const { data: rawData, loading, error, init } = usePromise(Api.getDayrecordLastest);
 
 init();
 
@@ -24,9 +24,13 @@ const processSleepData = (data: any[]) => {
   data.forEach((item) => {
     xAxisData.push(item.date);
 
+    if (!item.record) {
+      return seriesData.push([]);
+    }
+
     const sleepDurations = item.record
-      .filter((r: any) => r.type === "sleep")
-      .map((sleep) => {
+      ?.filter((r: any) => r.type === "sleep")
+      ?.map((sleep) => {
         const startTime = new Date(sleep.startTime).getTime();
         const endTime = new Date(sleep.endTime).getTime();
         return (endTime - startTime) / (1000 * 60 * 60); // 转换为小时
@@ -83,34 +87,31 @@ watch(
 
     // 更新图表配置
     option.value = {
-      title: {
-        text: "近一周睡眠情况",
-        left: "left",
-        textStyle: { color: "#fff" },
-        padding: [20, 20, 20, 20], // 设置 padding 为 [上, 右, 下, 左]，可以调整上面的空隙
-      },
       tooltip: {
         trigger: "axis",
         axisPointer: { type: "shadow" },
       },
       legend: {
-        show: true,
-        bottom: "bottom",
+        show: false,
+        bottom: "10px", // 将 legend 放在距底部 10px 位置
         textStyle: { color: "#FFFDFE" },
-        data: Array.from(categoryMap.values()).map((item) => item.name), // 使用分类名作为legend
+        padding: [0, 0], // legend 内边距调整
+        data: Array.from(categoryMap.values()).map((item) => item.name), // 使用分类名作为 legend
       },
       grid: {
         left: "5%",
         right: "5%",
-        bottom: "5%",
-        top: "20%", // 可以在 grid 中加入 top 来调整整体图表和 title 之间的间距
+        bottom: "0%", // 增加 grid.bottom，确保 xAxis 不被遮挡
+        top: "15%", // 保证标题和图表之间的空间
         containLabel: true,
       },
       xAxis: {
         type: "category",
         data: xAxisData,
         axisLine: { lineStyle: { color: "#FFFDFE" } },
-        axisLabel: { color: "#FFFDFE", interval: 0 },
+        axisLabel: {
+          color: "#FFFDFE",
+        },
       },
       yAxis: {
         type: "value",
@@ -140,6 +141,6 @@ const getCategoryByDuration = (duration: number) => {
 <style scoped>
 .chart {
   width: 100%;
-  height: 600px;
+  height: 100%;
 }
 </style>

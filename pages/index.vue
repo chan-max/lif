@@ -11,10 +11,12 @@
     </div>
 
     <!-- 右侧文字 -->
+
     <div class="banner-content">
       <h1 class="text-[4em] font-bold gradient-text gradient-text-color">
         你的人生健康助手
       </h1>
+      <p>您的所有记录将会参与数据分析，便于获取更精准的身体状况的与个性化提示</p>
       <UButton :ui="{ rounded: 'rounded-full' }" size="xl" variant="solid" class="mt-4"
         ><span> 快速开始 </span></UButton
       >
@@ -81,29 +83,46 @@ onMounted(() => {
     });
   }
 
-  // Draw the stars
+  // Resize the canvas with high DPI optimization
+  function resizeCanvas() {
+    const pixelRatio = window.devicePixelRatio || 1;
+    canvas.width = window.innerWidth * pixelRatio;
+    canvas.height = window.innerHeight * pixelRatio;
+    ctx.scale(pixelRatio, pixelRatio); // Scale to device pixel ratio
+    createStars();
+  }
+
+  // Draw the stars with glow and circular shape
   function drawStars() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Add a dark radial blur gradient background
+    // Add radial gradient background
     const gradient = ctx.createRadialGradient(
       canvas.width / 2,
       canvas.height / 2,
-      canvas.width / 8, // Start small for a blur effect
+      canvas.width / 8,
       canvas.width / 2,
       canvas.height / 2,
-      canvas.width // Expand to the edges
+      canvas.width
     );
-    // gradient.addColorStop(0, "rgba(10, 20, 40, 1)"); // Deep dark blue at the center
-    gradient.addColorStop(1, "rgba(0, 0, 0, 1)"); // Black at the edges
+    gradient.addColorStop(0, "#12131c");
+    gradient.addColorStop(1, "#000");
 
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw stars with parallax effect
+    // Draw each star
     stars.forEach((star) => {
+      ctx.beginPath();
+      ctx.arc(star.x, star.y, star.size, 0, 2 * Math.PI);
+
+      ctx.shadowBlur = star.size * 5; // Glow effect
+      ctx.shadowColor = `rgba(255, 255, 255, ${star.opacity})`;
+
       ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
-      ctx.fillRect(star.x, star.y, star.size, star.size);
+      ctx.fill();
+
+      ctx.closePath();
     });
   }
 
@@ -164,7 +183,7 @@ onMounted(() => {
 
     ctx.beginPath();
     ctx.strokeStyle = gradient;
-    ctx.lineWidth = 2;
+    ctx.lineWidth = 1;
     ctx.moveTo(shootingStar.x, shootingStar.y);
     ctx.lineTo(
       shootingStar.x - shootingStar.dx * shootingStar.length,
@@ -229,7 +248,6 @@ onMounted(() => {
 .banner-content {
   flex: 2; /* 右侧文字占与图片相同的比例 */
   text-align: right; /* 文字居右对齐 */
-  color: #333;
   padding: 10px; /* 添加内边距增加舒适感 */
 }
 
@@ -332,12 +350,18 @@ onMounted(() => {
 }
 
 #star-canvas {
-  display: block;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: -1;
+}
+
+.dark {
+  #star-canvas {
+    display: block;
+  }
 }
 </style>

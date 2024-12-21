@@ -70,7 +70,7 @@ export const sleepCategories = [
         key: 'restorative_sleep',  // 唯一标识
         category: '恢复性睡眠',
         minMilliseconds: 9 * 60 * 60 * 1000,  // 9小时 = 9 * 60 * 60 * 1000 毫秒
-        maxMilliseconds: Infinity,  // 超过 9 小时
+        maxMilliseconds: 24 * 60 * 60 * 1000,  // 超过 9 小时
         description: '恢复性睡眠（超过9小时）：当身体处于极度疲劳或疾病恢复期时，通常需要超过 9 小时的睡眠，帮助快速恢复体力和免疫系统。',
         color: '#3366FF',  // 深蓝色：代表深度恢复和放松
     },

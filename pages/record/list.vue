@@ -1,7 +1,7 @@
 <template>
   <div class="py-12 px-16 flex gap-8 flex-col min-h-screen">
     <h1 class="text-xl font-bold">
-      <span class="text-custom-400">{{ list.length }} </span> 条记录
+      <span class="text-custom-400">{{ total }} </span> 条记录
     </h1>
 
     <div
@@ -43,7 +43,7 @@
         <div class="h-8 flex justify-center">
           <!-- <Chart-digit :value="row.record.length"></Chart-digit> -->
 
-          {{ row.record.length }}
+          {{ row.record?.length }}
         </div>
       </template>
       <template #createTime-data="{ row }">

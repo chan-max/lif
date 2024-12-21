@@ -9,7 +9,7 @@ import { usePromise } from "@/common/hooks/promise";
 
 
 
-const {data,init} = usePromise(Api.getDayrecordLastest7)
+const {data,init} = usePromise(Api.getDayrecordLastest)
 
 init()
 </script>
