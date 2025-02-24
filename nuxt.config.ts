@@ -38,6 +38,11 @@ export default defineNuxtConfig({
           src: '/fullpage.js',
           type: 'text/javascript',
           defer: true,
+        },
+        {
+          src: '/lib/particles/particles.js',
+          type: 'text/javascript',
+          defer: true,
         }
       ]
     }

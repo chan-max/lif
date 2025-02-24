@@ -26,7 +26,7 @@
 
 <script setup>
 onMounted(() => {
-  return
+  return;
   const canvas = document.getElementById("star-canvas");
 
   const ctx = canvas.getContext("2d");

@@ -8,11 +8,8 @@
       algorithm: colorMode == 'dark' ? theme.darkAlgorithm : '',
     }"
   >
-    <div class="flex flex-col w-full h-full relative">
-
-
+    <div class="flex flex-col w-full h-full relative" id="main-div">
       <Header></Header>
-
       <div
         style=" margin-top: var(--header)"
         class="shrink-0 mx-auto w-full min-h-screen"
@@ -20,7 +17,6 @@
         <slot></slot>
         <!-- <ContentDoc :path="$route.path" /> -->
       </div>
-
       <Footer></Footer>
     </div>
   </AConfigProvider>
@@ -37,7 +33,6 @@ import zhCN from "ant-design-vue/es/locale/zh_CN";
 import { theme } from "ant-design-vue";
 import { useI18n } from "vue-i18n";
 import { colorMode } from "@/common/index";
-
 console.log('default layout loaded')
 
 const { locale, locales, setLocale } = useI18n();
@@ -45,6 +40,10 @@ const { locale, locales, setLocale } = useI18n();
 function handleSubscribe() {
   router.push({ path: "/subscribe" });
 }
+
+particlesJS.load('main-div', '/lib/particles/star.json', function() {
+  console.log('callback - particles.js config loaded');
+});
 
 
 </script>
@@ -61,6 +60,10 @@ body,
 }
 
 .dark {
-  background-color: #0F1017;
+  background-color: #020617;
+}
+
+.particles-js-canvas-el{
+  position: absolute;
 }
 </style>

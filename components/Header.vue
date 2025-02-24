@@ -266,6 +266,6 @@ header {
 }
 .dark header {
   color: white;
-  background-color: rgba(18, 18, 18, 0.3);
+  background-color: transparent;
 }
 </style>
