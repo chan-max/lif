@@ -3,14 +3,17 @@ import config from './config'
 import vueJsx from '@vitejs/plugin-vue-jsx';
 export default defineNuxtConfig({
   ssr: false,
+
   // ssr:true,target:'static',
   vite: {
     plugins: [vueJsx(),], // 加载 Vue JSX 插件
 
   },
+
   typescript: {
     shim: false, // 禁用 shim，提高类型推断能力
   },
+
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -39,6 +42,7 @@ export default defineNuxtConfig({
       ]
     }
   },
+
   runtimeConfig: {
     public: {
       appEnv: process.env.NODE_ENV || 'development',
@@ -47,11 +51,14 @@ export default defineNuxtConfig({
       apiKey: process.env.API_KEY || config.apiKey,
     },
   },
+
   devtools: { enabled: true },
   css: ['~/public/fullpage.css', '~/assets/main.scss', '~/assets/md.scss', 'animate.css/animate.min.css', 'v-calendar/dist/style.css', 'vue-data-ui/style.css', 'cal-heatmap/cal-heatmap.css',],
+
   build: {
     transpile: ['element-plus'], // 确保正确编译 Element Plus
   },
+
   modules: [
     '@nuxt/ui',
     '@nuxtjs/sitemap',
@@ -67,6 +74,7 @@ export default defineNuxtConfig({
     'nuxt-echarts',
     '@samk-dev/nuxt-vcalendar',
   ],
+
   // gtm: {
   //   id: config.gtmID,
   //   defer: false,
@@ -74,6 +82,7 @@ export default defineNuxtConfig({
   site: {
     url: process.env.BASE_URL || 'http://localhost:1234',
   },
+
   sitemap: {
     cacheMaxAgeSeconds: 60 * 60 * 24,
     xsl: false,
@@ -83,16 +92,19 @@ export default defineNuxtConfig({
       '/api/__sitemap__/urls',
     ],
   },
+
   i18n: {
     lazy: true, // Enable lazy loading
     strategy: 'no_prefix', // URL strategy
     vueI18n: './i18n.config.ts', // Path to Vue I18n configuration
     locales: ["en", "zh"], //配置语种
   },
+
   paypal: {
     clientId: 'AdOWq5VdofoxJKPNX7U7SMKF-pdRrzjbZ5aftu_peFlDFsSx-m2BpO8_tkSCngK3hHTOvYyQq_0mm73T',
     // ...options
   },
+
   colorMode: {
     preference: 'system', // default value of $colorMode.preference
     // fallback: 'light', // fallback value if not system preference found
@@ -103,8 +115,11 @@ export default defineNuxtConfig({
     classSuffix: '-mode',
     storageKey: 'nuxt-color-mode'
   },
+
   devServer: {
     https: true,
     host: 'localhost',
   },
+
+  compatibilityDate: '2025-02-22',
 })

@@ -1,6 +1,5 @@
 # **Lif: The Future of Personal Health Assistant**
 
-
 > **Inspired by ancient Greek mythology, powered by modern AI.**  
 > Lif takes its name from the ancient mythological spirit of life, blending history, health, and cutting-edge technology to empower you on your wellness journey.
 
