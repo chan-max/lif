@@ -127,9 +127,7 @@
   </div>
 </template>
 
-<script setup>
-
-</script>
+<script setup></script>
 
 <style scoped>
 /* 基础卡片样式 */

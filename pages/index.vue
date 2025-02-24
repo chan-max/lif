@@ -1,6 +1,6 @@
 <template>
   <div class="banner-container container m-auto p-12">
-    <canvas id="star-canvas"></canvas>
+    <!-- <canvas id="star-canvas"></canvas> -->
     <!-- 左侧图片 -->
     <div class="banner-image">
       <img
@@ -26,6 +26,7 @@
 
 <script setup>
 onMounted(() => {
+  return
   const canvas = document.getElementById("star-canvas");
 
   const ctx = canvas.getContext("2d");
@@ -105,7 +106,8 @@ onMounted(() => {
       canvas.height / 2,
       canvas.width
     );
-    gradient.addColorStop(0, "#12131c");
+    // gradient.addColorStop(0, "#12131c");
+    gradient.addColorStop(0, "#000");
     gradient.addColorStop(1, "#000");
 
     ctx.fillStyle = gradient;

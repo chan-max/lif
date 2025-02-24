@@ -10,8 +10,6 @@ export function usePromise<T, Args extends any[]>(promiseFn: (...args: Args) => 
         loading.value = true;
         error.value = null;
         params.value = args;
-
-
         promiseFn(...args)
             .then((result) => {
 
