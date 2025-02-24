@@ -12,7 +12,7 @@
       <Header></Header>
       <div
         style=" margin-top: var(--header)"
-        class="shrink-0 mx-auto w-full min-h-screen"
+        class="shrink-0 mx-auto w-full min-h-screen z-1"
       >
         <slot></slot>
         <!-- <ContentDoc :path="$route.path" /> -->
