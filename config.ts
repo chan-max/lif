@@ -39,7 +39,7 @@ export default defineConfig({
 
     gtmID: '',
 
-    favicon: '/favicon.svg',
+    favicon: '/clover-logo.svg',
 
     metaDescription: ``,
 

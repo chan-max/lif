@@ -1,6 +1,6 @@
 # **Lif: The Future of Personal Health Assistant**
 
-# 
+# AI 驱动的分析助手生活助手，关于健康分析，运势分析，生活记录等
 
 > **Inspired by ancient Greek mythology, powered by modern AI.**  
 > Lif takes its name from the ancient mythological spirit of life, blending history, health, and cutting-edge technology to empower you on your wellness journey.

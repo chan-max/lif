@@ -34,6 +34,7 @@
     "axios": "^1.7.7",
     "cal-heatmap": "^4.2.4",
     "cos-js-sdk-v5": "^1.8.6",
+    "cross-env": "^7.0.3",
     "date-fns": "^2.30.0",
     "echarts": "^5.5.1",
     "element-plus": "^2.8.8",

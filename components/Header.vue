@@ -1,28 +1,28 @@
 <template>
   <!-- Header -->
   <header
-    :class="`py-4 shadow-md z-10`"
+    :class="`py-4 shadow-md z-50`"
     class="lif-header fixed w-full"
     style="
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       height: var(--header);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(1px);
     "
   >
-    <div class="mx-auto flex justify-between items-center px-8 h-full">
+    <div class="mx-auto flex justify-between items-center px-12 h-full max-w-screen-xl">
       <!-- Logo -->
       <NuxtLink to="/" class="flex items-center space-x-2">
         <img
-          :src="colorMode == 'dark' ? '/logo6-dark.svg' : '/logo6.svg'"
+          src="/logo.svg"
           alt="Logo"
-          class="h-10 w-auto pr-2 max-w-[240px] md:max-w-none hover:scale-105 transition-all"
+          class="h-10 w-auto max-w-[240px] md:max-w-none hover:scale-105 transition-all"
         />
       </NuxtLink>
 
       <!-- Navigation -->
-      <div class="flex items-center space-x-4">
+      <div class="flex items-center space-x-6">
         <!-- Tabs for PC -->
-        <nav class="hidden md:flex space-x-2 mr-4">
+        <nav class="hidden md:flex space-x-3 mr-6">
           <button
             v-for="(tab, index) in tabs"
             :key="index"
@@ -38,9 +38,9 @@
           </button>
         </nav>
 
-        <ColorMode />
+        <!-- <ColorMode /> -->
 
-        <!-- Language Selector -->
+        <!-- Language Selector (commented out, unchanged) -->
         <!-- <select
           v-model="currentLang"
           @change="changeLanguage"
@@ -56,16 +56,11 @@
           <template v-if="loginStore.isLogin">
             <UDropdown :items="[items]" :popper="{ placement: 'bottom-end' }">
               <a-badge :offset="[-4, 4]">
-                <!-- <div
-                  class="relative bg-gradient-to-r from-custom-400 via-custom-500 to-custom-600 rounded-full"
-                > -->
                 <UAvatar
                   :src="loginStore.userInfo?.avatar || getUserDefaultAvatar()"
                   :alt="loginStore.userInfo?.username"
                   class="cursor-pointer hover:opacity-80 transition w-10 h-10 rounded-full shrink-0"
-                >
-                </UAvatar>
-                <!-- </div> -->
+                />
                 <template #count>
                   <img v-if="avatarBadgeSrc" class="w-4 h-4" :src="avatarBadgeSrc" />
                   <div></div>
@@ -98,9 +93,9 @@
       </div>
     </div>
 
-    <!-- Login Modal -->
+    <!-- Login Modal (unchanged) -->
     <UModal v-model="showLoginModal" title="User Login" :closable="true">
-      <div class="p-6 space-y-4">
+      <div class="p-6 space-y-4 z-50">
         <h2 class="text-lg font-semibold text-gray-700 dark:text-gray-300">
           登录你的账号
         </h2>
@@ -168,6 +163,7 @@
 </template>
 
 <script setup>
+// 保持原有的 script setup 内容不变
 import { ref, computed } from "vue";
 import { useRouter } from "vue-router";
 import { useI18n } from "vue-i18n";
@@ -175,11 +171,9 @@ import { useLoginStatusStore, doLogout } from "@/common/store/login";
 import Api from "@/common/api/axios";
 import { doLoginAction } from "@/common/store/login";
 import { getUserDefaultAvatar } from "@/common/index";
-
 import { colorMode } from "@/common/index";
 
 const currentLang = ref("zh");
-
 const router = useRouter();
 
 const langOptions = ref([
@@ -192,14 +186,8 @@ const isAdmin = computed(() => loginStore.userInfo?.isAdmin);
 
 const avatarBadgeSrc = computed(() => {
   let gender = loginStore.userInfo?.gender;
-
-  if (gender == "1") {
-    return "/img/male.svg";
-  }
-
-  if (gender == "0") {
-    return "/img/female.svg";
-  }
+  if (gender == "1") return "/img/male.svg";
+  if (gender == "0") return "/img/female.svg";
 });
 
 const tabs = [

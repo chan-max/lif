@@ -1,9 +1,17 @@
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
+
+
+// const config = useRuntimeConfig()
+
+console.log(process.env.NUST_BASE_URL)
+
 // 创建 Axios 实例
 export const axiosInstance = axios.create({
     // baseURL: "https://49.232.186.238:4321", // 基础地址
-    baseURL: "https://localhost:4321", // 基础地址
+    // baseURL: config.public.baseURL, // 基础地址
+    baseURL: 'https://localhost:4321', // 基础地址
+
     timeout: 50000, // 请求超时时间
     validateStatus: function (status) {
         return status >= 200 && status < 300 || status === 401; // 允许 401

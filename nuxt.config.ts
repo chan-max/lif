@@ -51,7 +51,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       appEnv: process.env.NODE_ENV || 'development',
-      baseURL: process.env.BASE_URL || 'http://localhost:3000',
+      baseURL: process.env.BASE_URL || 'https://1s.design:4321',
       apiURL: process.env.API_URL || config.apiURL,
       apiKey: process.env.API_KEY || config.apiKey,
     },

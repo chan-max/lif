@@ -1,25 +1,23 @@
 <template>
-  <div class="banner-container container m-auto p-12">
-    <!-- <canvas id="star-canvas"></canvas> -->
-    <!-- 左侧图片 -->
-    <div class="banner-image">
-      <img
-        src="/bg.svg"
-        alt="Background Image"
-        class="animate__animated animate__pulse animate__infinite slow-heartbeat"
-      />
-    </div>
+  <div class="flex flex-col items-center">
+    <div class="banner-container container m-auto p-12">
+      <!-- <canvas id="star-canvas"></canvas> -->
+      <!-- 左侧图片 -->
+      <div class="banner-image">
+        <Chart-BannerWordCloud></Chart-BannerWordCloud>
+      </div>
 
-    <!-- 右侧文字 -->
+      <!-- 右侧文字 -->
 
-    <div class="banner-content">
-      <h1 class="text-[4em] font-bold gradient-text gradient-text-color">
-        你的人生健康助手
-      </h1>
-      <p>您的所有记录将会参与数据分析，便于获取更精准的身体状况的与个性化提示</p>
-      <UButton :ui="{ rounded: 'rounded-full' }" size="xl" variant="solid" class="mt-4"
-        ><span> 快速开始 </span></UButton
-      >
+      <div class="banner-content">
+        <h1 class="text-[4em] font-bold gradient-text gradient-text-color">
+          AI 驱动的人生健康助手
+        </h1>
+        <p>您的所有记录将会参与数据分析，便于获取更精准的身体状况的与个性化提示</p>
+        <UButton :ui="{ rounded: 'rounded-full' }" size="xl" variant="solid" class="mt-4"
+          ><span> 快速开始 </span></UButton
+        >
+      </div>
     </div>
   </div>
 </template>
