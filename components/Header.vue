@@ -9,7 +9,7 @@
       backdrop-filter: blur(1px);
     "
   >
-    <div class="mx-auto flex justify-between items-center px-12 h-full max-w-screen-xl">
+    <div class="mx-auto flex justify-start items-center px-12 h-full max-w-screen-xl">
       <!-- Logo -->
       <NuxtLink to="/" class="flex items-center space-x-2">
         <img
@@ -19,25 +19,26 @@
         />
       </NuxtLink>
 
-      <!-- Navigation -->
-      <div class="flex items-center space-x-6">
-        <!-- Tabs for PC -->
-        <nav class="hidden md:flex space-x-3 mr-6">
-          <button
-            v-for="(tab, index) in tabs"
-            :key="index"
-            @click="navigateTab(index, tab)"
-            :class="[
-              'transition rounded-lg text-xs font-medium px-2 py-1',
-              $route.path === tab.path
-                ? 'bg-custom-200 text-black dark:bg-custom-600 dark:text-white'
-                : 'text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white',
-            ]"
-          >
-            {{ tab.label }}
-          </button>
-        </nav>
+      <!-- Tabs for PC -->
+      <nav class="hidden md:flex space-x-3 mr-6 ml-12">
+        <button
+          v-for="(tab, index) in tabs"
+          :key="index"
+          @click="navigateTab(index, tab)"
+          :class="[
+            'transition rounded-lg text-xs font-medium px-2 py-1',
+            $route.path === tab.path
+              ? 'bg-custom-200 text-black dark:bg-custom-600 dark:text-white'
+              : 'text-gray-600 hover:text-black dark:text-gray-300 dark:hover:text-white',
+          ]"
+        >
+          {{ tab.label }}
+        </button>
+      </nav>
 
+      <div style="flex:1;"></div>
+
+      <div class="flex items-center space-x-6">
         <!-- <ColorMode /> -->
 
         <!-- Language Selector (commented out, unchanged) -->
