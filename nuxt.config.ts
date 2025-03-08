@@ -3,12 +3,22 @@ import config from './config'
 import vueJsx from '@vitejs/plugin-vue-jsx';
 export default defineNuxtConfig({
   ssr: false,
+  // ssr:true,
 
-  // ssr:true,target:'static',
+  nitro: {
+    prerender: {
+      routes:[
+        '/download'
+      ],
+      crawlLinks: true, // 让 Nuxt 自动爬取所有可访问的页面
+    }
+  },
   vite: {
     plugins: [vueJsx(),], // 加载 Vue JSX 插件
 
   },
+
+
 
   typescript: {
     shim: false, // 禁用 shim，提高类型推断能力

@@ -9,7 +9,7 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "generate:prod": "BASE_URL=https://dravexispath.com NODE_ENV=production nuxt generate"
+    "generate:prod": "BASE_URL=https://.com NODE_ENV=production nuxt generate"
   },
   "dependencies": {
     "@ant-design-vue/nuxt": "^1.4.6",
