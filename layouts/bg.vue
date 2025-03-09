@@ -44,13 +44,14 @@ html,
   body,
   #__nuxt {
     height: 100%;
+    background-color: #020617!important;
   }
 
 .light {
 }
 
 .dark {
-  background-color: #020617;
+  background-color: #020617!important;
 }
 
 .particles-js-canvas-el {

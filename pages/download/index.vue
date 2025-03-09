@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center justify-center h-full p-6 text-center">
     <!-- Logo -->
-    <img src="/logo.svg" alt="App Logo" class="w-44 h-44 mb-6" />
+    <img src="/logo.svg" alt="App Logo" class="w-44 h-24 mb-6" />
 
     <!-- App 介绍 -->
     <p class="text-white/80 text-base leading-relaxed max-w-md mb-6 text-center px-6" style="font-size: 12px;">
@@ -14,7 +14,7 @@
 
     <!-- 下载按钮 -->
     <a
-      href="/clover.apk"
+      href="/app-release.apk"
       class="bg-green-500 text-white px-5 py-2 rounded-lg text-base font-medium transition hover:bg-green-600 w-full max-w-xs"
     >
       📲 立即下载 Android 版
