@@ -8,13 +8,12 @@
       </div>
 
       <!-- 右侧文字 -->
-
       <div class="banner-content">
-        <h1 class="text-[4em] font-bold gradient-text gradient-text-color">
+        <h1 class="text-[2.5em] md:text-[4em] font-bold gradient-text gradient-text-color">
           AI 驱动的人生健康助手
         </h1>
-        <p>您的所有记录将会参与数据分析，便于获取更精准的身体状况的与个性化提示</p>
-        <UButton :ui="{ rounded: 'rounded-full' }" size="xl" variant="solid" class="mt-4"
+        <p class="text-sm md:text-base">您的所有记录将会参与数据分析，便于获取更精准的身体状况的与个性化提示</p>
+        <UButton :ui="{ rounded: 'rounded-full' }" size="lg" variant="solid" class="mt-4"
           ><span> 快速开始 </span></UButton
         >
       </div>
@@ -23,7 +22,9 @@
 </template>
 
 <script setup>
-
+definePageMeta({
+  layout: "bg",
+});
 </script>
 
 <style scoped lang="less">
@@ -47,12 +48,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%; /* 图片宽度自适应 */
+  max-width: 800px; /* 最大宽度限制 */
+  min-height: 50vh;
+  height: auto; /* 高度自适应 */
 }
 
 .banner-image img {
-  width: 100%; /* 图片宽度自适应 */
-  max-width: 800px; /* 最大宽度限制 */
-  height: auto; /* 高度自适应 */
+
   object-fit: contain; /* 确保图片内容完整 */
   border-radius: 8px; /* 图片的圆角 */
 }
@@ -96,6 +99,7 @@
     flex-direction: column; /* 垂直排列 */
     text-align: center; /* 居中内容 */
     height: auto; /* 小屏幕高度自动适应内容 */
+    padding: 20px; /* 增加内边距 */
   }
 
   .banner-image {
@@ -131,6 +135,19 @@
 
   .banner-subtitle {
     font-size: 0.9rem;
+  }
+
+  .banner-content h1 {
+    font-size: 2em; /* 进一步减小标题字体大小 */
+  }
+
+  .banner-content p {
+    font-size: 0.9em; /* 进一步减小段落字体大小 */
+  }
+
+  .banner-content .UButton {
+    font-size: 0.9em; /* 减小按钮字体大小 */
+    padding: 8px 16px; /* 调整按钮内边距 */
   }
 }
 

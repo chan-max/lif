@@ -4,7 +4,7 @@
     <img src="/logo.svg" alt="App Logo" class="w-44 h-24 mb-6" />
 
     <!-- App 介绍 -->
-    <p class="text-white/80 text-base leading-relaxed max-w-md mb-6 text-center px-6" style="font-size: 12px;">
+    <p class="text-white/80 text-sm leading-relaxed max-w-md mb-6">
       四叶草 是一款AI驱动的智能健康管理工具。
       它通过行为追踪、情绪洞察和运势分析等功能，
       助你深入了解自我、优化生活节奏，找到最适合自己的生活方式。
@@ -13,31 +13,25 @@
     </p>
 
     <!-- 下载按钮 -->
-    <a
-      href="/app-release.apk"
-      class="bg-green-500 text-white px-5 py-2 rounded-lg text-base font-medium transition hover:bg-green-600 w-full max-w-xs"
-    >
-      📲 立即下载 Android 版
-    </a>
-
-    <!-- iOS 下载（不可用） -->
-    <button
-      disabled
-      class="bg-white/20 text-white/60 px-5 py-2 rounded-lg text-base font-medium mt-3 w-full max-w-xs cursor-not-allowed"
-    >
-      🍏 iOS 版本暂未上线
-    </button>
-
-    <!-- Web 版本 -->
-    <p class="mt-4 text-lg font-semibold text-white">
-      也可以访问我们的
+    <div class="flex flex-col gap-3 w-full max-w-xs">
+      <a
+        href="/app-release.apk"
+        class="bg-green-500 text-white px-5 py-2 rounded-lg text-base font-medium transition hover:bg-green-600 text-center"
+      >
+        📲 下载 Android 版 ( beta )
+      </a>
       <a
         href="http://thelawofattraction.cn"
         target="_blank"
-        class="text-green-400 hover:underline"
+        class="bg-white/10 text-white px-5 py-2 rounded-lg text-base font-medium transition hover:bg-white/20 text-center"
       >
-        🌍 Web 版
+        🌍 访问 Web 版
       </a>
+    </div>
+
+    <!-- iOS 提示 -->
+    <p class="mt-4 text-white/60 text-sm">
+      🍏 iOS 版本暂未上线，敬请期待！
     </p>
 
     <!-- 下载提示 -->
@@ -50,11 +44,11 @@
       @click="copyToClipboard"
     >
       📞 联系作者：<span>187 4253 9196</span>（微信同步）
-      <p class="text-xs text-white/60">📋 点击复制</p>
+      <p class="text-xs text-white/60">点击复制</p>
     </div>
 
     <!-- 标语 -->
-    <p class="absolute bottom-6 text-white/50 text-xs w-3/5 leading-relaxed opacity-40" style="font-size: 11px;">
+    <p class="absolute bottom-6 text-white/50 text-xs w-3/5 leading-relaxed opacity-40">
       当岁月流逝，到了生命的尽头，你将什么都带不走，除了那份美好而温馨的回忆。
     </p>
   </div>
