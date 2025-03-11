@@ -32,8 +32,8 @@ export default defineConfig({
     },
 
 
-    brandName: "LifCare",
-    tagline: "你的人生健康助手",
+    brandName: "四叶草",
+    tagline: "AI 驱动的人生健康助手",
     apiKey: '',
     apiURL: '',
 
